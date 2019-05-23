@@ -1,0 +1,17 @@
+{
+    "title": "Node.js 小书",
+    "description": "讲解 node.js 的使用",
+    "author": "榛果拿铁",
+    "output.name": "site",
+    "language": "zh-hans",
+    "gitbook": "3.2.3",
+    "root": ".",
+    "structure": {
+        "readme": "introduction.md"
+    },
+    "links": {
+        "sidebar": {
+            "Home": ""
+        }
+    }
+}

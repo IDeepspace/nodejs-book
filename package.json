@@ -1,0 +1,17 @@
+{
+  "name": "nodejs-book",
+  "version": "1.0.0",
+  "description": "node.js 小书",
+  "main": "index.js",
+  "scripts": {
+    "start": "gitbook serve ./content",
+    "build": "gitbook build ./content ./gh-pages",
+    "deploy": "node ./scripts/deploy-gh-pages.js",
+    "publish": "npm run build && npm run deploy"
+  },
+  "author": "榛果拿铁",
+  "license": "ISC",
+  "dependencies": {
+    "gh-pages": "^2.0.1"
+  }
+}
