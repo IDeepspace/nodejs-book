@@ -1,7 +1,5 @@
 # Summary
 
-* [Introduction](README.md)
-
 * [介绍](introduction/README.md)
     
 * [历史](history/README.md)
