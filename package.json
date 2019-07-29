@@ -7,7 +7,7 @@
     "start": "gitbook serve ./content",
     "build": "gitbook build ./content ./gh-pages",
     "deploy": "node ./scripts/deploy-gh-pages.js",
-    "commit-source-files": "git add . && git commit -m 'update' && git push",
+    "commit-source-files": "git add . && git commit -m 'update' && git push -f",
     "publish": "npm run build && npm run commit-source-files && npm run deploy"
   },
   "author": "榛果拿铁",
