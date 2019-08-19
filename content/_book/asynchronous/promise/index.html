@@ -1,0 +1,812 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>1. Promise · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../generator/" />
+    
+    
+    <link rel="prev" href="../" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../introduction/">
+            
+                <a href="../../introduction/">
+            
+                    
+                    一、介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../history/">
+            
+                <a href="../../history/">
+            
+                    
+                    二、历史
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../environment/">
+            
+                <a href="../../environment/">
+            
+                    
+                    三、设置开发环境和工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../node/">
+            
+                <a href="../../node/">
+            
+                    
+                    四、运行 Node.js 程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../npm/">
+            
+                <a href="../../npm/">
+            
+                    
+                    五、npm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../eventLoop/">
+            
+                <a href="../../eventLoop/">
+            
+                    
+                    六、事件循环机制
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../../eventLoop/concept/">
+            
+                <a href="../../eventLoop/concept/">
+            
+                    
+                    1. 概念介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../../eventLoop/browser/">
+            
+                <a href="../../eventLoop/browser/">
+            
+                    
+                    2. 浏览器中的事件循环机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../../eventLoop/nodejs/">
+            
+                <a href="../../eventLoop/nodejs/">
+            
+                    
+                    3. nodejs中的事件循环机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    七、异步流程控制
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.8.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    1. Promise
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../generator/">
+            
+                <a href="../generator/">
+            
+                    
+                    2. Generator/yield
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../async/">
+            
+                <a href="../async/">
+            
+                    
+                    3. Async/Await
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../../EventEmitter/">
+            
+                <a href="../../EventEmitter/">
+            
+                    
+                    八、EventEmitter
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../../Buffer/">
+            
+                <a href="../../Buffer/">
+            
+                    
+                    九、Buffer(缓冲区)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../../Stream/">
+            
+                <a href="../../Stream/">
+            
+                    
+                    十、Stream(流)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../../nodejs-fs/">
+            
+                <a href="../../nodejs-fs/">
+            
+                    
+                    十一、文件操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../../HTTP/">
+            
+                <a href="../../HTTP/">
+            
+                    
+                    十二、HTTP 请求
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="../../Koa/">
+            
+                <a href="../../Koa/">
+            
+                    
+                    十三、Express
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="../../RESTful/">
+            
+                <a href="../../RESTful/">
+            
+                    
+                    十四、RESTful API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="../../process/">
+            
+                <a href="../../process/">
+            
+                    
+                    十五、进程管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="../../MySQL/">
+            
+                <a href="../../MySQL/">
+            
+                    
+                    十六、Node.JS 连接 MySQL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" data-path="../../MongoDB/">
+            
+                <a href="../../MongoDB/">
+            
+                    
+                    十七、Node.JS 连接 MongoDB
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >1. Promise</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="promise">Promise</h2>
+<p><code>Promise</code> &#x662F;&#x5F02;&#x6B65;&#x7F16;&#x7A0B;&#x7684;&#x4E00;&#x79CD;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;&#x6BD4;&#x4F20;&#x7EDF;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x2014;&#x2014;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x548C;&#x4E8B;&#x4EF6;&#x2014;&#x2014;&#x66F4;&#x5408;&#x7406;&#x548C;&#x66F4;&#x5F3A;&#x5927;&#x3002;&#x5B83;&#x7531;&#x793E;&#x533A;&#x6700;&#x65E9;&#x63D0;&#x51FA;&#x548C;&#x5B9E;&#x73B0;&#xFF0C;<code>ES6</code> &#x5C06;&#x5176;&#x5199;&#x8FDB;&#x4E86;&#x8BED;&#x8A00;&#x6807;&#x51C6;&#xFF0C;&#x7EDF;&#x4E00;&#x4E86;&#x7528;&#x6CD5;&#xFF0C;&#x539F;&#x751F;&#x63D0;&#x4F9B;&#x4E86; <code>Promise</code> &#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x6240;&#x8C13; <code>Promise</code>&#xFF0C;&#x7B80;&#x5355;&#x8BF4;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;&#xFF0C;&#x91CC;&#x9762;&#x4FDD;&#x5B58;&#x7740;&#x67D0;&#x4E2A;&#x672A;&#x6765;&#x624D;&#x4F1A;&#x7ED3;&#x675F;&#x7684;&#x4E8B;&#x4EF6;&#xFF08;&#x901A;&#x5E38;&#x662F;&#x4E00;&#x4E2A;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#xFF09;&#x7684;&#x7ED3;&#x679C;&#x3002;&#x4ECE;&#x8BED;&#x6CD5;&#x4E0A;&#x8BF4;&#xFF0C;<code>Promise</code>  &#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x4ECE;&#x5B83;&#x53EF;&#x4EE5;&#x83B7;&#x53D6;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x7684;&#x6D88;&#x606F;&#x3002;<code>Promise</code> &#x63D0;&#x4F9B;&#x7EDF;&#x4E00;&#x7684; <code>API</code>&#xFF0C;&#x5404;&#x79CD;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x90FD;&#x53EF;&#x4EE5;&#x7528;&#x540C;&#x6837;&#x7684;&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;</p>
+<h3 id="&#x4E00;&#x3001;&#x4ECB;&#x7ECD;">&#x4E00;&#x3001;&#x4ECB;&#x7ECD;</h3>
+<p>&#x5B66;&#x4E60;&#x4E00;&#x4E2A;&#x4E1C;&#x897F;&#xFF0C;&#x5F97;&#x5148;&#x77E5;&#x9053;&#x5B83;&#x662F;&#x4EC0;&#x4E48;&#x3002;&#x6211;&#x4EEC;&#x5148;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x4F7F;&#x7528; <code>console.dir(Promise)</code> &#x6253;&#x5370;&#x51FA; <code>Promise</code> &#x5BF9;&#x8C61;&#x7684;&#x6240;&#x7684;&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;&#x3002;</p>
+<p><img src="https://raw.githubusercontent.com/IDeepspace/ImageHosting/master/JavaScript/promise.png" alt="Promise"></p>
+<p>&#x4ECE;&#x6253;&#x5370;&#x7ED3;&#x679C;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;<code>Promise</code> &#x662F;&#x4E00;&#x4E2A;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x81EA;&#x5DF1;&#x672C;&#x8EAB;&#x6709; <code>all</code>&#x3001;<code>reject</code>&#x3001;<code>resolve</code> &#x7B49;&#x65B9;&#x6CD5;&#xFF0C;&#x539F;&#x578B;&#x4E0A;&#x6709; <code>catch</code>&#x3001;<code>finally</code>&#x3001;<code>then</code> &#x7B49;&#x65B9;&#x6CD5;&#x3002;&#x6240;&#x4EE5; <code>new</code> &#x51FA;&#x6765;&#x7684; <code>Promise</code> &#x5BF9;&#x8C61;&#x4E5F;&#x5C31;&#x81EA;&#x7136;&#x62E5;&#x6709; <code>catch</code>&#x3001;<code>finally</code>&#x3001;<code>then</code> &#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x3002;&#x4ECE;&#x4E0A;&#x56FE;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;<code>then</code> &#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x65B0;&#x7684; <code>Promise</code> &#x5B9E;&#x4F8B;&#xFF08;&#x6CE8;&#x610F;&#xFF0C;&#x4E0D;&#x662F;&#x539F;&#x6765;&#x90A3;&#x4E2A; <code>Promise</code> &#x5B9E;&#x4F8B;&#xFF09;&#x3002;&#x56E0;&#x6B64;&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x94FE;&#x5F0F;&#x5199;&#x6CD5;&#xFF0C;&#x5373; <code>then</code> &#x65B9;&#x6CD5;&#x540E;&#x9762;&#x518D;&#x8C03;&#x7528;&#x53E6;&#x4E00;&#x4E2A; <code>then</code> &#x65B9;&#x6CD5;&#x3002;</p>
+<p><code>Promise</code> &#x7684;&#x4E2D;&#x6587;&#x610F;&#x601D;&#x662F;&#x627F;&#x8BFA;&#xFF0C;&#x8FD9;&#x79CD;<strong>&quot;&#x627F;&#x8BFA;&#x5C06;&#x6765;&#x4F1A;&#x6267;&#x884C;&quot;</strong>&#x7684;&#x5BF9;&#x8C61;&#x5728; <code>JavaScript</code> &#x4E2D;&#x79F0;&#x4E3A; <code>Promise</code> &#x5BF9;&#x8C61;&#x3002;&#x7B80;&#x5355;&#x8BF4;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;&#xFF0C;&#x91CC;&#x9762;&#x4FDD;&#x5B58;&#x7740;&#x67D0;&#x4E2A;&#x672A;&#x6765;&#x624D;&#x4F1A;&#x6267;&#x884C;&#x7684;&#x4E8B;&#x4EF6;&#xFF08;&#x901A;&#x5E38;&#x662F;&#x4E00;&#x4E2A;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#xFF09;&#x7684;&#x7ED3;&#x679C;&#x3002;</p>
+<blockquote>
+<p><code>Promise</code>&#x5BF9;&#x8C61;&#x6709;&#x4EE5;&#x4E0B;&#x4E24;&#x4E2A;&#x7279;&#x70B9;&#x3002;</p>
+<p>&#xFF08;1&#xFF09;&#x5BF9;&#x8C61;&#x7684;&#x72B6;&#x6001;&#x4E0D;&#x53D7;&#x5916;&#x754C;&#x5F71;&#x54CD;&#x3002;<code>Promise</code> &#x5BF9;&#x8C61;&#x4EE3;&#x8868;&#x4E00;&#x4E2A;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#xFF0C;&#x6709;&#x4E09;&#x79CD;&#x72B6;&#x6001;&#xFF1A;<code>pending</code>&#xFF08;&#x8FDB;&#x884C;&#x4E2D;&#xFF09;&#x3001;<code>fulfilled</code>&#xFF08;&#x5DF2;&#x6210;&#x529F;&#xFF09;&#x548C; <code>rejected</code>&#xFF08;&#x5DF2;&#x5931;&#x8D25;&#xFF09;&#x3002;&#x53EA;&#x6709;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x53EF;&#x4EE5;&#x51B3;&#x5B9A;&#x5F53;&#x524D;&#x662F;&#x54EA;&#x4E00;&#x79CD;&#x72B6;&#x6001;&#xFF0C;&#x4EFB;&#x4F55;&#x5176;&#x4ED6;&#x64CD;&#x4F5C;&#x90FD;&#x65E0;&#x6CD5;&#x6539;&#x53D8;&#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#x3002;&#x8FD9;&#x4E5F;&#x662F; <code>Promise</code> &#x8FD9;&#x4E2A;&#x540D;&#x5B57;&#x7684;&#x7531;&#x6765;&#xFF0C;&#x5B83;&#x7684;&#x82F1;&#x8BED;&#x610F;&#x601D;&#x5C31;&#x662F;&#x201C;&#x627F;&#x8BFA;&#x201D;&#xFF0C;&#x8868;&#x793A;&#x5176;&#x4ED6;&#x624B;&#x6BB5;&#x65E0;&#x6CD5;&#x6539;&#x53D8;&#x3002;</p>
+<p>&#xFF08;2&#xFF09;&#x4E00;&#x65E6;&#x72B6;&#x6001;&#x6539;&#x53D8;&#xFF0C;&#x5C31;&#x4E0D;&#x4F1A;&#x518D;&#x53D8;&#xFF0C;&#x4EFB;&#x4F55;&#x65F6;&#x5019;&#x90FD;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x8FD9;&#x4E2A;&#x7ED3;&#x679C;&#x3002;<code>Promise</code> &#x5BF9;&#x8C61;&#x7684;&#x72B6;&#x6001;&#x6539;&#x53D8;&#xFF0C;&#x53EA;&#x6709;&#x4E24;&#x79CD;&#x53EF;&#x80FD;&#xFF1A;&#x4ECE; <code>pending</code> &#x53D8;&#x4E3A; <code>fulfilled</code> &#x548C;&#x4ECE; <code>pending</code> &#x53D8;&#x4E3A; <code>rejected</code>&#x3002;&#x53EA;&#x8981;&#x8FD9;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#x53D1;&#x751F;&#xFF0C;&#x72B6;&#x6001;&#x5C31;&#x51DD;&#x56FA;&#x4E86;&#xFF0C;&#x4E0D;&#x4F1A;&#x518D;&#x53D8;&#x4E86;&#xFF0C;&#x4F1A;&#x4E00;&#x76F4;&#x4FDD;&#x6301;&#x8FD9;&#x4E2A;&#x7ED3;&#x679C;&#xFF0C;&#x8FD9;&#x65F6;&#x5C31;&#x79F0;&#x4E3A; <code>resolved</code>&#xFF08;&#x5DF2;&#x5B9A;&#x578B;&#xFF09;&#x3002;&#x5982;&#x679C;&#x6539;&#x53D8;&#x5DF2;&#x7ECF;&#x53D1;&#x751F;&#x4E86;&#xFF0C;&#x4F60;&#x518D;&#x5BF9;<code>Promise</code> &#x5BF9;&#x8C61;&#x6DFB;&#x52A0;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x4E5F;&#x4F1A;&#x7ACB;&#x5373;&#x5F97;&#x5230;&#x8FD9;&#x4E2A;&#x7ED3;&#x679C;&#x3002;&#x8FD9;&#x4E0E;&#x4E8B;&#x4EF6;&#xFF08;<code>Event</code>&#xFF09;&#x5B8C;&#x5168;&#x4E0D;&#x540C;&#xFF0C;&#x4E8B;&#x4EF6;&#x7684;&#x7279;&#x70B9;&#x662F;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x9519;&#x8FC7;&#x4E86;&#x5B83;&#xFF0C;&#x518D;&#x53BB;&#x76D1;&#x542C;&#xFF0C;&#x662F;&#x5F97;&#x4E0D;&#x5230;&#x7ED3;&#x679C;&#x7684;&#x3002;</p>
+<p><code>Promise</code> &#x4E5F;&#x6709;&#x4E00;&#x4E9B;&#x7F3A;&#x70B9;&#x3002;&#x9996;&#x5148;&#xFF0C;&#x65E0;&#x6CD5;&#x53D6;&#x6D88; <code>Promise</code>&#xFF0C;&#x4E00;&#x65E6;&#x65B0;&#x5EFA;&#x5B83;&#x5C31;&#x4F1A;&#x7ACB;&#x5373;&#x6267;&#x884C;&#xFF0C;&#x65E0;&#x6CD5;&#x4E2D;&#x9014;&#x53D6;&#x6D88;&#x3002;&#x5176;&#x6B21;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x8BBE;&#x7F6E;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;<code>Promise</code> &#x5185;&#x90E8;&#x629B;&#x51FA;&#x7684;&#x9519;&#x8BEF;&#xFF0C;&#x4E0D;&#x4F1A;&#x53CD;&#x5E94;&#x5230;&#x5916;&#x90E8;&#x3002;&#x7B2C;&#x4E09;&#xFF0C;&#x5F53;&#x5904;&#x4E8E; <code>pending</code> &#x72B6;&#x6001;&#x65F6;&#xFF0C;&#x65E0;&#x6CD5;&#x5F97;&#x77E5;&#x76EE;&#x524D;&#x8FDB;&#x5C55;&#x5230;&#x54EA;&#x4E00;&#x4E2A;&#x9636;&#x6BB5;&#xFF08;&#x521A;&#x521A;&#x5F00;&#x59CB;&#x8FD8;&#x662F;&#x5373;&#x5C06;&#x5B8C;&#x6210;&#xFF09;&#x3002;</p>
+<p>&#x2014;&#x2014; &#x6458;&#x81EA; <a href="http://es6.ruanyifeng.com/#docs/promise" target="_blank">http://es6.ruanyifeng.com/#docs/promise</a></p>
+</blockquote>
+<h3 id="&#x4E8C;&#x3001;promise&#x7684;&#x4F7F;&#x7528;">&#x4E8C;&#x3001;Promise&#x7684;&#x4F7F;&#x7528;</h3>
+<h4 id="1&#x3001;&#x521B;&#x5EFA;promise">1&#x3001;&#x521B;&#x5EFA;Promise</h4>
+<p>&#x90A3;&#x5982;&#x4F55;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; <code>Promise</code> &#x5462;&#xFF0C;&#x4E0B;&#x9762;&#x770B;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> p = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>{
+  <span class="hljs-comment">//Do some Async</span>
+  setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;&#x6267;&#x884C;&#x5B8C;&#x6210;&apos;</span>);
+    resolve(<span class="hljs-string">&apos;&#x6570;&#x636E;&apos;</span>);
+  }, <span class="hljs-number">2000</span>);
+});
+</code></pre>
+<p><code>Promise</code> &#x6784;&#x9020;&#x51FD;&#x6570;&#x63A5;&#x53D7;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x7684;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x5206;&#x522B;&#x662F; <code>resolve</code> &#x548C; <code>reject</code>&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x4E5F;&#x662F;&#x51FD;&#x6570;&#xFF0C;&#x7531; <code>JavaScript</code> &#x5F15;&#x64CE;&#x63D0;&#x4F9B;&#xFF0C;&#x4E0D;&#x7528;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x3002;</p>
+<ul>
+<li><code>resolve</code> &#x51FD;&#x6570;&#x7684;&#x4F5C;&#x7528;&#x662F;&#xFF0C;&#x5C06; <code>Promise</code> &#x5BF9;&#x8C61;&#x7684;&#x72B6;&#x6001;&#x4ECE;&#x201C;&#x672A;&#x5B8C;&#x6210;&#x201D;&#x53D8;&#x4E3A;&#x201C;&#x6210;&#x529F;&#x201D;&#xFF08;&#x5373;&#x4ECE; <code>pending</code> &#x53D8;&#x4E3A; <code>resolved</code>&#xFF09;&#xFF0C;&#x5728;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x6210;&#x529F;&#x65F6;&#x8C03;&#x7528;&#xFF0C;&#x5E76;&#x5C06;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x51FA;&#x53BB;&#xFF1B;</li>
+<li><code>reject</code> &#x51FD;&#x6570;&#x7684;&#x4F5C;&#x7528;&#x662F;&#xFF0C;&#x5C06; <code>Promise</code> &#x5BF9;&#x8C61;&#x7684;&#x72B6;&#x6001;&#x4ECE;&#x201C;&#x672A;&#x5B8C;&#x6210;&#x201D;&#x53D8;&#x4E3A;&#x201C;&#x5931;&#x8D25;&#x201D;&#xFF08;&#x5373;&#x4ECE; <code>pending</code> &#x53D8;&#x4E3A; <code>rejected</code>&#xFF09;&#xFF0C;&#x5728;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x5931;&#x8D25;&#x65F6;&#x8C03;&#x7528;&#xFF0C;&#x5E76;&#x5C06;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x62A5;&#x51FA;&#x7684;&#x9519;&#x8BEF;&#xFF0C;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x51FA;&#x53BB;&#x3002;</li>
+</ul>
+<p>&#x5728;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x6267;&#x884C;&#x4E86;&#x4E00;&#x4E2A;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#xFF0C;&#x4E5F;&#x5C31;&#x662F; <code>setTimeout</code>&#xFF0C;2&#x79D2;&#x540E;&#xFF0C;&#x8F93;&#x51FA;&#x201C;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x201D;&#xFF0C;&#x5E76;&#x4E14;&#x8C03;&#x7528; <code>resolve</code>&#x65B9;&#x6CD5;&#x3002;&#x8FD0;&#x884C;&#x4EE3;&#x7801;&#x7684;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x662F; <code>new</code> &#x4E86;&#x4E00;&#x4E2A; <code>Promise</code> &#x5BF9;&#x8C61;&#xFF0C;&#x5E76;&#x6CA1;&#x6709;&#x8C03;&#x7528;&#x5B83;&#xFF0C;&#x6211;&#x4EEC;&#x4F20;&#x8FDB;&#x53BB;&#x7684;&#x51FD;&#x6570;&#x5C31;&#x5DF2;&#x7ECF;&#x6267;&#x884C;&#x4E86;&#x3002;<strong>&#x6240;&#x4EE5;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528; <code>Promise</code> &#x7684;&#x65F6;&#x5019;&#x4E00;&#x822C;&#x662F;&#x5305;&#x5728;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x5728;&#x9700;&#x8981;&#x7684;&#x65F6;&#x5019;&#x53BB;&#x8FD0;&#x884C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570; :</strong></p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">runAsync</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> p = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>{
+    <span class="hljs-comment">//Do some Async</span>
+    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;&#x6267;&#x884C;&#x5B8C;&#x6210;&apos;</span>);
+      resolve(<span class="hljs-string">&apos;&#x6570;&#x636E;&apos;</span>);
+    }, <span class="hljs-number">2000</span>);
+  });
+  <span class="hljs-keyword">return</span> p;
+}
+runAsync();
+</code></pre>
+<p>&#x51FD;&#x6570;&#x4F1A; <code>return</code> &#x51FA; <code>Promise</code> &#x5BF9;&#x8C61;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x6211;&#x4EEC;&#x5F97;&#x5230;&#x4E86;&#x4E00;&#x4E2A; <code>Promise</code> &#x5BF9;&#x8C61;&#x3002;&#x5728;&#x6587;&#x7AE0;&#x5F00;&#x59CB;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x77E5;&#x9053; <code>Promise</code> &#x5BF9;&#x8C61;&#x62E5;&#x6709; <code>catch</code>&#x3001;<code>finally</code>&#x3001;<code>then</code> &#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x770B;&#x770B;&#x600E;&#x4E48;&#x4F7F;&#x7528;&#x5B83;&#x4EEC;&#x3002;&#x7EE7;&#x7EED;&#x4F7F;&#x7528;&#x4E0A;&#x9762;&#x7684; <code>runAsync</code> &#x51FD;&#x6570; :</p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">runAsync</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> p = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>{
+    <span class="hljs-comment">//Do some Async</span>
+    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;&#x6267;&#x884C;&#x5B8C;&#x6210;&apos;</span>);
+      resolve(<span class="hljs-string">&apos;&#x6570;&#x636E;&apos;</span>);
+    }, <span class="hljs-number">2000</span>);
+  });
+  <span class="hljs-keyword">return</span> p;
+}
+runAsync().then(
+  <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>{
+    <span class="hljs-comment">// success</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`&#x6210;&#x529F;&#x62FF;&#x5230;<span class="hljs-subst">${data}</span>`</span>);
+    <span class="hljs-comment">//&#x540E;&#x9762;&#x53EF;&#x4EE5;&#x7528;&#x4F20;&#x8FC7;&#x6765;&#x7684;&#x6570;&#x636E;&#x505A;&#x4E9B;&#x5176;&#x4ED6;&#x64CD;&#x4F5C;</span>
+    <span class="hljs-comment">// ......</span>
+  },
+  <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{
+    <span class="hljs-comment">// failure</span>
+    <span class="hljs-built_in">console</span>.log(error);
+  }
+);
+</code></pre>
+<p><code>Promise</code> &#x5B9E;&#x4F8B;&#x751F;&#x6210;&#x4EE5;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x7528; <code>then</code> &#x65B9;&#x6CD5;&#x5206;&#x522B;&#x6307;&#x5B9A; <code>resolved</code> &#x72B6;&#x6001;&#x548C; <code>rejected</code> &#x72B6;&#x6001;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;<code>Promise</code>&#x5B9E;&#x4F8B;&#x7684;&#x72B6;&#x6001;&#x53D8;&#x4E3A; <code>resolved</code> &#x6216; <code>rejected</code>&#xFF0C;&#x5C31;&#x4F1A;&#x89E6;&#x53D1; <code>then</code> &#x65B9;&#x6CD5;&#x7ED1;&#x5B9A;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</p>
+<pre><code class="lang-javascript">promise.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">value</span>) </span>{
+  <span class="hljs-comment">// success</span>
+}, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{
+  <span class="hljs-comment">// failure</span>
+});
+</code></pre>
+<p><code>then</code> &#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x4E24;&#x4E2A;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x3002;&#x7B2C;&#x4E00;&#x4E2A;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x662F; <code>Promise</code> &#x5BF9;&#x8C61;&#x7684;&#x72B6;&#x6001;&#x53D8;&#x4E3A; <code>resolved</code> &#x65F6;&#x8C03;&#x7528;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x662F; <code>Promise</code> &#x5BF9;&#x8C61;&#x7684;&#x72B6;&#x6001;&#x53D8;&#x4E3A; <code>rejected</code> &#x65F6;&#x8C03;&#x7528;&#x3002;&#x5176;&#x4E2D;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x51FD;&#x6570;&#x662F;&#x53EF;&#x9009;&#x7684;&#xFF0C;&#x4E0D;&#x4E00;&#x5B9A;&#x8981;&#x63D0;&#x4F9B;&#x3002;&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x90FD;&#x63A5;&#x53D7; <code>Promise</code> &#x5BF9;&#x8C61;&#x4F20;&#x51FA;&#x7684;&#x503C;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x3002;</p>
+<p>&#x7ED3;&#x8BBA;&#xFF1A;&#x6240;&#x4EE5;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x5C31;&#x4F1A;&#x53D1;&#x73B0;&#xFF1A;&#x539F;&#x6765; <code>then</code> &#x91CC;&#x9762;&#x7684;&#x51FD;&#x6570;&#x548C;&#x6211;&#x4EEC;&#x5E73;&#x65F6;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4E00;&#x4E2A;&#x610F;&#x601D;&#xFF0C;&#x80FD;&#x591F;&#x5728; <code>runAsync</code> &#x8FD9;&#x4E2A;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#x88AB;&#x6267;&#x884C;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x6E05;&#x695A;&#x7684;&#x77E5;&#x9053; <code>Promise</code> &#x7684;&#x4F5C;&#x7528;&#x4E86;&#xFF1A;<strong>&#x5F02;&#x6B65;&#x6267;&#x884C;&#x7684;&#x6D41;&#x7A0B;&#x4E2D;&#xFF0C;&#x628A;&#x539F;&#x6765;&#x7684;&#x56DE;&#x8C03;&#x5199;&#x6CD5;&#xFF08;&#x6267;&#x884C;&#x4EE3;&#x7801;&#x548C;&#x5904;&#x7406;&#x7ED3;&#x679C;&#x7684;&#x4EE3;&#x7801;&#xFF09;&#x5206;&#x79BB;&#x51FA;&#x6765;&#xFF0C;&#x5728;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x6267;&#x884C;&#x5B8C;&#x540E;&#xFF0C;&#x7528;&#x94FE;&#x5F0F;&#x8C03;&#x7528;&#x7684;&#x65B9;&#x5F0F;&#x6267;&#x884C;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;</strong></p>
+<p>&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x518D;&#x5177;&#x4F53;&#x770B;&#x770B; <code>Promise</code> &#x76F8;&#x6BD4;&#x4E8E;&#x56DE;&#x8C03;&#x5D4C;&#x5957;&#x7684;&#x5199;&#x6CD5;&#x7684;&#x597D;&#x5904;&#x3002;</p>
+<h4 id="2&#x3001;&#x56DE;&#x8C03;&#x5D4C;&#x5957;&#x4E0E;promise">2&#x3001;&#x56DE;&#x8C03;&#x5D4C;&#x5957;&#x4E0E;Promise</h4>
+<p>&#x4ECE;&#x8868;&#x9762;&#x4E0A;&#x770B;&#xFF0C;<code>Promise</code> &#x53EA;&#x662F;&#x80FD;&#x591F;&#x7B80;&#x5316;&#x5C42;&#x5C42;&#x56DE;&#x8C03;&#x7684;&#x5199;&#x6CD5;&#xFF0C;&#x800C;&#x5B9E;&#x8D28;&#x4E0A;&#xFF0C;<code>Promise</code> &#x7684;&#x7CBE;&#x9AD3;&#x662F;&#x201C;&#x72B6;&#x6001;&#x201D;&#xFF0C;&#x7528;&#x7EF4;&#x62A4;&#x72B6;&#x6001;&#x3001;&#x4F20;&#x9012;&#x72B6;&#x6001;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x4F7F;&#x5F97;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x80FD;&#x591F;&#x53CA;&#x65F6;&#x8C03;&#x7528;&#xFF0C;&#x5B83;&#x6BD4;&#x4F20;&#x9012; <code>callback</code> &#x51FD;&#x6570;&#x8981;&#x7B80;&#x5355;&#x3001;&#x7075;&#x6D3B;&#x7684;&#x591A;&#x3002;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;&#x8FD9;&#x79CD;&#x7B80;&#x5316;&#x89E3;&#x51B3;&#x4E86;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF1A;</p>
+<p>&#x4EE5;&#x5F80;&#x4F7F;&#x7528;&#x56DE;&#x8C03;&#x5D4C;&#x5957;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x5904;&#x7406;&#x5F02;&#x6B65;&#x7684;&#x4EE3;&#x7801;&#x662F;&#x600E;&#x4E48;&#x5B9E;&#x73B0;&#x7684;&#x5462;&#xFF1F;</p>
+<pre><code class="lang-javascript">doA(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  doB();
+  doC(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    doD();
+  });
+  doE();
+});
+doF();
+
+<span class="hljs-comment">//&#x6267;&#x884C;&#x987A;&#x5E8F;&#xFF1A;</span>
+<span class="hljs-comment">//doA</span>
+<span class="hljs-comment">//doF</span>
+<span class="hljs-comment">//doB</span>
+<span class="hljs-comment">//doC</span>
+<span class="hljs-comment">//doE</span>
+<span class="hljs-comment">//doD</span>
+</code></pre>
+<p>&#x8FD9;&#x6837;&#x7EC4;&#x7EC7;&#x7684;&#x4EE3;&#x7801;&#x5C31;&#x4F1A;&#x9047;&#x5230;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;&#x5F53;&#x9879;&#x76EE;&#x7684;&#x4EE3;&#x7801;&#x53D8;&#x5F97;&#x590D;&#x6742;&#xFF0C;&#x52A0;&#x4E0A;&#x4E86;&#x5404;&#x79CD;&#x903B;&#x8F91;&#x5224;&#x65AD;&#xFF0C;&#x4E0D;&#x65AD;&#x7684;&#x5728;&#x51FD;&#x6570;&#x4E4B;&#x95F4;&#x8DF3;&#x8F6C;&#xFF0C;&#x90A3;&#x6392;&#x67E5;&#x95EE;&#x9898;&#x7684;&#x96BE;&#x5EA6;&#x5C31;&#x4F1A;&#x5927;&#x5927;&#x589E;&#x52A0;&#x3002;&#x5C31;&#x6BD4;&#x5982;&#x5728;&#x4E0A;&#x9762;&#x8FD9;&#x4E2A;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;<code>doD()</code> &#x5FC5;&#x987B;&#x5728; <code>doC()</code> &#x5B8C;&#x6210;&#x540E;&#x624D;&#x80FD;&#x5B8C;&#x6210;&#xFF0C;&#x5982;&#x679C; <code>doC()</code> &#x6267;&#x884C;&#x5931;&#x8D25;&#x4E86;&#x5462;&#xFF1F;&#x6211;&#x4EEC;&#x662F;&#x8981;&#x91CD;&#x8BD5; <code>doC()</code> &#x5417;&#xFF1F;&#x8FD8;&#x662F;&#x76F4;&#x63A5;&#x8F6C;&#x5230;&#x5176;&#x4ED6;&#x9519;&#x8BEF;&#x5904;&#x7406;&#x51FD;&#x6570;&#x4E2D;&#xFF1F;&#x5F53;&#x6211;&#x4EEC;&#x5C06;&#x8FD9;&#x4E9B;&#x5224;&#x65AD;&#x90FD;&#x52A0;&#x5165;&#x5230;&#x8FD9;&#x4E2A;&#x6D41;&#x7A0B;&#x4E2D;&#xFF0C;&#x5F88;&#x5FEB;&#x4EE3;&#x7801;&#x5C31;&#x4F1A;&#x53D8;&#x5F97;&#x975E;&#x5E38;&#x590D;&#x6742;&#xFF0C;&#x96BE;&#x4EE5;&#x5B9A;&#x4F4D;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x56DE;&#x8C03;&#x5D4C;&#x5957;&#xFF1A;</p>
+<pre><code class="lang-javascript">request(url, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, res, body</span>) </span>{
+    <span class="hljs-keyword">if</span> (err) handleError(err);
+    fs.writeFile(<span class="hljs-string">&apos;1.txt&apos;</span>, body, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
+        request(url2, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, res, body</span>) </span>{
+            <span class="hljs-keyword">if</span> (err) handleError(err)
+        })
+    })
+});
+</code></pre>
+<p>&#x4F7F;&#x7528; <code>Promise</code> &#x4E4B;&#x540E;:</p>
+<pre><code class="lang-javascript">request(url)
+.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">result</span>) </span>{
+    <span class="hljs-keyword">return</span> writeFileAsynv(<span class="hljs-string">&apos;1.txt&apos;</span>, result)
+})
+.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">result</span>) </span>{
+    <span class="hljs-keyword">return</span> request(url2)
+})
+.catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>)</span>{
+    handleError(e)
+});
+</code></pre>
+<p>&#x4F7F;&#x7528; <code>Promise</code> &#x7684;&#x597D;&#x5904;&#x5C31;&#x975E;&#x5E38;&#x660E;&#x663E;&#x4E86;&#x3002;</p>
+<h4 id="3&#x3001;catch-&#x65B9;&#x6CD5;">3&#x3001;catch &#x65B9;&#x6CD5;</h4>
+<p> <code>Promise</code> &#x5BF9;&#x8C61;&#x4E5F;&#x62E5;&#x6709; <code>catch</code> &#x65B9;&#x6CD5;&#x3002;&#x5B83;&#x7684;&#x7528;&#x9014;&#x662F;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;&#x5176;&#x5B9E;&#x5B83;&#x548C; <code>then</code> &#x65B9;&#x6CD5;&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x7528;&#x6765;&#x6307;&#x5B9A;<code>reject</code> &#x7684;&#x56DE;&#x8C03;&#xFF0C;&#x548C;&#x5199;&#x5728; <code>then</code> &#x91CC;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x91CC;&#x9762;&#x7684;&#x6548;&#x679C;&#x662F;&#x4E00;&#x6837;&#x3002;&#x7528;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-javascript">runAsync()
+.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;resolved&apos;</span>);
+    <span class="hljs-built_in">console</span>.log(data);
+})
+.catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>)</span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;rejected&apos;</span>);
+    <span class="hljs-built_in">console</span>.log(error);
+});
+</code></pre>
+<p><code>catch</code> &#x8FD8;&#x6709;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x4F5C;&#x7528;&#xFF1A;&#x5728;&#x6267;&#x884C; <code>resolve</code> &#x7684;&#x56DE;&#x8C03;&#xFF08;&#x4E5F;&#x5C31;&#x662F;&#x4E0A;&#x9762; <code>then</code> &#x4E2D;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#xFF09;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x4E86;&#xFF08;&#x4EE3;&#x7801;&#x51FA;&#x9519;&#x4E86;&#xFF09;&#xFF0C;&#x90A3;&#x4E48;&#x5E76;&#x4E0D;&#x4F1A;&#x7A0B;&#x5E8F;&#x62A5;&#x9519;&#x5361;&#x6B7B;&#xFF0C;&#x800C;&#x662F;&#x4F1A;&#x8FDB;&#x5230;&#x8FD9;&#x4E2A; <code>catch</code> &#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x770B;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code class="lang-javascript">runAsync()
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;resolved&apos;</span>);
+    <span class="hljs-built_in">console</span>.log(data);
+    <span class="hljs-built_in">console</span>.log(somedata); <span class="hljs-comment">//&#x6B64;&#x5904;&#x7684;somedata&#x672A;&#x5B9A;&#x4E49;</span>
+  })
+  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;rejected&apos;</span>);
+    <span class="hljs-built_in">console</span>.log(error);
+  });
+
+<span class="hljs-comment">// &#x6267;&#x884C;&#x5B8C;&#x6210;</span>
+<span class="hljs-comment">// resolved</span>
+<span class="hljs-comment">// &#x6570;&#x636E;</span>
+<span class="hljs-comment">// rejected</span>
+<span class="hljs-comment">// ReferenceError: somedata is not defined</span>
+</code></pre>
+<p>&#x5728; <code>resolve</code> &#x7684;&#x56DE;&#x8C03;&#x4E2D;&#xFF0C;<code>somedata</code> &#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#x662F;&#x6CA1;&#x6709;&#x88AB;&#x5B9A;&#x4E49;&#x7684;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x4E0D;&#x7528; <code>catch</code>&#xFF0C;&#x4EE3;&#x7801;&#x8FD0;&#x884C;&#x5230;&#x8FD9;&#x91CC;&#x5C31;&#x76F4;&#x63A5;&#x62A5;&#x9519;&#x4E86;&#xFF0C;&#x4E0D;&#x5F80;&#x4E0B;&#x8FD0;&#x884C;&#x4E86;&#x3002;&#x4F46;&#x662F;&#x5728;&#x8FD9;&#x91CC;&#xFF0C;&#x4F1A;&#x5F97;&#x5230;&#x8FD9;&#x6837;&#x7684;&#x7ED3;&#x679C;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x5230; <code>catch</code> &#x65B9;&#x6CD5;&#x91CC;&#x9762;&#x53BB;&#x4E86;&#xFF0C;&#x800C;&#x4E14;&#x628A;&#x9519;&#x8BEF;&#x539F;&#x56E0;&#x4F20;&#x5230;&#x4E86; <code>error</code> &#x53C2;&#x6570;&#x4E2D;&#x3002;&#x5373;&#x4FBF;&#x662F;&#x6709;&#x9519;&#x8BEF;&#x7684;&#x4EE3;&#x7801;&#x4E5F;&#x4E0D;&#x4F1A;&#x62A5;&#x9519;&#x4E86;&#xFF0C;&#x8FD9;&#x4E0E; <code>try/catch</code> &#x8BED;&#x53E5;&#x6709;&#x76F8;&#x540C;&#x7684;&#x529F;&#x80FD;&#x3002;<strong>&#x6240;&#x4EE5;&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x6355;&#x83B7;&#x9519;&#x8BEF;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>catch</code> &#x65B9;&#x6CD5;&#x3002;</strong></p>
+<h4 id="4&#x3001;promiseall">4&#x3001;Promise.all()</h4>
+<p><code>Promise.all</code> &#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x5C06;&#x591A;&#x4E2A; <code>Promise</code> &#x5B9E;&#x4F8B;&#xFF0C;&#x5305;&#x88C5;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x7684; <code>Promise</code> &#x5B9E;&#x4F8B;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> p = <span class="hljs-built_in">Promise</span>.all([p1, p2, p3]);
+</code></pre>
+<p>&#x770B;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">runAsync1</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> p = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>{
+    <span class="hljs-comment">//Do some Async</span>
+    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;&#x6267;&#x884C;&#x5B8C;&#x6210;1&apos;</span>);
+      resolve(<span class="hljs-string">&apos;&#x6570;&#x636E;1&apos;</span>);
+    }, <span class="hljs-number">2000</span>);
+  });
+  <span class="hljs-keyword">return</span> p;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">runAsync2</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> p = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>{
+    <span class="hljs-comment">//Do some Async</span>
+    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;&#x6267;&#x884C;&#x5B8C;&#x6210;2&apos;</span>);
+      resolve(<span class="hljs-string">&apos;&#x6570;&#x636E;2&apos;</span>);
+    }, <span class="hljs-number">2000</span>);
+  });
+  <span class="hljs-keyword">return</span> p;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">runAsync3</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> p = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>{
+    <span class="hljs-comment">//Do some Async</span>
+    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;&#x6267;&#x884C;&#x5B8C;&#x6210;3&apos;</span>);
+      resolve(<span class="hljs-string">&apos;&#x6570;&#x636E;3&apos;</span>);
+    }, <span class="hljs-number">2000</span>);
+  });
+  <span class="hljs-keyword">return</span> p;
+}
+
+<span class="hljs-built_in">Promise</span>.all([runAsync1(), runAsync2(), runAsync3()]).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">results</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(results);
+});
+
+<span class="hljs-comment">// &#x6267;&#x884C;&#x5B8C;&#x6210;1</span>
+<span class="hljs-comment">// &#x6267;&#x884C;&#x5B8C;&#x6210;2</span>
+<span class="hljs-comment">// &#x6267;&#x884C;&#x5B8C;&#x6210;3</span>
+<span class="hljs-comment">// [ &apos;&#x6570;&#x636E;1&apos;, &apos;&#x6570;&#x636E;2&apos;, &apos;&#x6570;&#x636E;3&apos; ]</span>
+</code></pre>
+<p>&#x7528; <code>Promise.all</code> &#x6765;&#x6267;&#x884C;&#xFF0C;&#x63A5;&#x6536;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x53C2;&#x6570;&#xFF0C;&#x91CC;&#x9762;&#x7684;&#x503C;&#x6700;&#x7EC8;&#x90FD;&#x8FD4;&#x56DE; <code>Promise</code> &#x5BF9;&#x8C61;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x4E09;&#x4E2A;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x7684;&#x5C31;&#x662F;&#x5E76;&#x884C;&#x6267;&#x884C;&#x7684;&#xFF0C;&#x7B49;&#x5230;&#x5B83;&#x4EEC;&#x90FD;&#x6267;&#x884C;&#x5B8C;&#x540E;&#x624D;&#x4F1A;&#x8FDB;&#x5230; <code>then</code> &#x91CC;&#x9762;&#x3002;&#x90A3;&#x4E48;&#xFF0C;&#x4E09;&#x4E2A;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x8FD4;&#x56DE;&#x7684;&#x6570;&#x636E;&#x54EA;&#x91CC;&#x53BB;&#x4E86;&#x5462;&#xFF1F;&#x90FD;&#x5728; <code>then</code> &#x91CC;&#x9762;&#x5462;&#xFF0C;<code>Promise.all</code> &#x4F1A;&#x628A;&#x6240;&#x6709;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x7684;&#x7ED3;&#x679C;&#x653E;&#x8FDB;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x4E2D;&#x4F20;&#x7ED9; <code>then</code> &#xFF0C;&#x5C31;&#x662F;&#x4E0A;&#x9762;&#x7684; <code>results</code> &#x3002;</p>
+<p><strong>&#x5E94;&#x7528;&#x573A;&#x666F;&#xFF1A;</strong></p>
+<p><code>Promise.all</code> &#x65B9;&#x6CD5;&#x6709;&#x4E00;&#x4E2A;&#x975E;&#x5E38;&#x5E38;&#x7528;&#x7684;&#x5E94;&#x7528;&#x573A;&#x666F;&#xFF1A;&#x6253;&#x5F00;&#x7F51;&#x9875;&#x65F6;&#xFF0C;&#x9884;&#x5148;&#x52A0;&#x8F7D;&#x9700;&#x8981;&#x7528;&#x5230;&#x7684;&#x5404;&#x79CD;&#x8D44;&#x6E90;&#x5982;&#x56FE;&#x7247;&#x53CA;&#x5404;&#x79CD;&#x9759;&#x6001;&#x6587;&#x4EF6;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x90FD;&#x52A0;&#x8F7D;&#x5B8C;&#x540E;&#xFF0C;&#x518D;&#x8FDB;&#x884C;&#x9875;&#x9762;&#x7684;&#x521D;&#x59CB;&#x5316;&#x3002; </p>
+<h4 id="5&#x3001;promiserace">5&#x3001;Promise.race()</h4>
+<p><code>race</code> &#x662F;&#x7ADE;&#x8D5B;&#x3001;&#x8D5B;&#x8DD1;&#x7684;&#x610F;&#x601D;&#x3002;&#x5B83;&#x7684;&#x7528;&#x6CD5;&#x4E5F;&#x5C31;&#x662F;&#x5B83;&#x7684;&#x5B57;&#x9762;&#x610F;&#x601D;&#xFF1A;<strong>&#x8C01;&#x8DD1;&#x7684;&#x5FEB;&#xFF0C;&#x5C31;&#x4EE5;&#x8C01;&#x4E3A;&#x51C6;&#xFF0C;&#x6267;&#x884C;&#x56DE;&#x8C03;</strong>&#x3002;&#x5176;&#x5B9E;&#x518D;&#x770B;&#x770B;<code>Promise.all</code> &#x65B9;&#x6CD5;&#xFF0C;&#x548C; <code>race</code> &#x65B9;&#x6CD5;&#x6070;&#x6070;&#x76F8;&#x53CD;&#x3002;&#x8FD8;&#x662F;&#x7528; <code>Promise.all</code> &#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x4F46;&#x662F;&#x628A; <code>runAsync1</code> &#x7684;&#x65B9;&#x6CD5; <code>timeout</code> &#x65F6;&#x95F4;&#x8C03;&#x6210; <code>1000ms</code>&#x3002; </p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">Promise</span>.race([runAsync1(), runAsync2(), runAsync3()]).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">results</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(results);
+});
+
+<span class="hljs-comment">// &#x6267;&#x884C;&#x5B8C;&#x6210;1</span>
+<span class="hljs-comment">// &#x6570;&#x636E;1</span>
+<span class="hljs-comment">// &#x6267;&#x884C;&#x5B8C;&#x6210;2</span>
+<span class="hljs-comment">// &#x6267;&#x884C;&#x5B8C;&#x6210;3</span>
+</code></pre>
+<p>&#x8FD9;&#x4E09;&#x4E2A;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x540C;&#x6837;&#x662F;&#x5E76;&#x884C;&#x6267;&#x884C;&#x7684;&#x3002;&#x7ED3;&#x679C;&#x5F88;&#x53EF;&#x4EE5;&#x731C;&#x5230;&#xFF0C;1&#x79D2;&#x540E; <code>runAsync1</code> &#x5DF2;&#x7ECF;&#x6267;&#x884C;&#x5B8C;&#x4E86;&#xFF0C;&#x6B64;&#x65F6; <code>then</code> &#x91CC;&#x9762;&#x7684;&#x65B9;&#x6CD5;&#x5C31;&#x4F1A;&#x7ACB;&#x5373;&#x6267;&#x884C;&#x4E86;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5728; <code>then</code> &#x91CC;&#x9762;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x5F00;&#x59CB;&#x6267;&#x884C;&#x65F6;&#xFF0C;<code>runAsync2()</code> &#x548C; <code>runAsync3()</code> &#x5E76;&#x6CA1;&#x6709;&#x505C;&#x6B62;&#xFF0C;&#x4ECD;&#x7136;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x3002;&#x6240;&#x4EE5;&#x518D;&#x8FC7;1&#x79D2;&#x540E;&#xFF0C;&#x8F93;&#x51FA;&#x4E86;&#x4ED6;&#x4EEC;&#x7ED3;&#x675F;&#x7684;&#x6807;&#x5FD7;&#x3002;&#x8FD9;&#x4E2A;&#x70B9;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x3002;</p>
+<p>&#x4E0A;&#x9762;&#x7684;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x5C31;&#x662F; <code>Promise</code> &#x6BD4;&#x8F83;&#x5E38;&#x7528;&#x7684;&#x51E0;&#x4E2A;&#x65B9;&#x6CD5;&#x4E86;&#x3002;</p>
+<h3 id="&#x4E09;&#x3001;&#x7EA2;&#x7EFF;&#x706F;&#x95EE;&#x9898;">&#x4E09;&#x3001;&#x7EA2;&#x7EFF;&#x706F;&#x95EE;&#x9898;</h3>
+<p>&#x9898;&#x76EE;&#xFF1A;&#x7EA2;&#x706F;&#x4E09;&#x79D2;&#x4EAE;&#x4E00;&#x6B21;&#xFF0C;&#x7EFF;&#x706F;&#x4E00;&#x79D2;&#x4EAE;&#x4E00;&#x6B21;&#xFF0C;&#x9EC4;&#x706F;2&#x79D2;&#x4EAE;&#x4E00;&#x6B21;&#xFF1B;&#x5982;&#x4F55;&#x8BA9;&#x4E09;&#x4E2A;&#x706F;&#x4E0D;&#x65AD;&#x4EA4;&#x66FF;&#x91CD;&#x590D;&#x4EAE;&#x706F;&#xFF1F;&#xFF08;&#x7528; <code>Promse</code> &#x5B9E;&#x73B0;&#xFF09;</p>
+<p>&#x4E09;&#x4E2A;&#x4EAE;&#x706F;&#x51FD;&#x6570;&#x5DF2;&#x7ECF;&#x5B58;&#x5728;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">red</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;red&apos;</span>);
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">green</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;green&apos;</span>);
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">yellow</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;yellow&apos;</span>);
+}
+</code></pre>
+<p>&#x5229;&#x7528; <code>then</code> &#x548C;&#x9012;&#x5F52;&#x5B9E;&#x73B0;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">red</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;red&apos;</span>);
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">green</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;green&apos;</span>);
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">yellow</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;yellow&apos;</span>);
+}
+
+<span class="hljs-keyword">const</span> light = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">timmer, color</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve, reject</span>) </span>{
+    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+      color();
+      resolve();
+    }, timmer);
+  });
+};
+
+<span class="hljs-keyword">const</span> step = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">Promise</span>.resolve()
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+      <span class="hljs-keyword">return</span> light(<span class="hljs-number">3000</span>, red);
+    })
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+      <span class="hljs-keyword">return</span> light(<span class="hljs-number">2000</span>, green);
+    })
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+      <span class="hljs-keyword">return</span> light(<span class="hljs-number">1000</span>, yellow);
+    })
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+      step();
+    });
+};
+
+step();
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../" class="navigation navigation-prev " aria-label="Previous page: 七、异步流程控制">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../generator/" class="navigation navigation-next " aria-label="Next page: 2. Generator/yield">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"1. Promise","level":"1.8.1","depth":2,"next":{"title":"2. Generator/yield","level":"1.8.2","depth":2,"path":"asynchronous/generator/README.md","ref":"asynchronous/generator/README.md","articles":[]},"previous":{"title":"七、异步流程控制","level":"1.8","depth":1,"path":"asynchronous/README.md","ref":"asynchronous/README.md","articles":[{"title":"1. Promise","level":"1.8.1","depth":2,"path":"asynchronous/promise/README.md","ref":"asynchronous/promise/README.md","articles":[]},{"title":"2. Generator/yield","level":"1.8.2","depth":2,"path":"asynchronous/generator/README.md","ref":"asynchronous/generator/README.md","articles":[]},{"title":"3. Async/Await","level":"1.8.3","depth":2,"path":"asynchronous/async/README.md","ref":"asynchronous/async/README.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"asynchronous/promise/README.md","mtime":"2019-08-19T07:12:05.786Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-19T02:26:37.546Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

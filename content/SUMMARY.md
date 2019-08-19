@@ -17,7 +17,8 @@
 
 * [七、异步流程控制](asynchronous/README.md)
     * [1. Promise](asynchronous/promise/README.md)
-    * [2. Async/Await](asynchronous/async/README.md)
+    * [2. Generator/yield](asynchronous/generator/README.md)
+    * [3. Async/Await](asynchronous/async/README.md)
 
 * [八、EventEmitter](EventEmitter/README.md)
 
@@ -38,9 +39,3 @@
 * [十六、Node.JS 连接 MySQL](MySQL/README.md)
 
 * [十七、Node.JS 连接 MongoDB](MongoDB/README.md)
-
-
-
-
-
-
