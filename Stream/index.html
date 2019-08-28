@@ -458,7 +458,157 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h2 id="stream">Stream</h2>
+<p>&#x6D41;&#xFF08;<code>stream</code>&#xFF09;&#x662F; <code>Node.js</code> &#x4E2D;&#x5904;&#x7406;&#x6D41;&#x5F0F;&#x6570;&#x636E;&#x7684;&#x62BD;&#x8C61;&#x63A5;&#x53E3;&#x3002; <code>stream</code> &#x6A21;&#x5757;&#x7528;&#x4E8E;&#x6784;&#x5EFA;&#x5B9E;&#x73B0;&#x4E86;&#x6D41;&#x63A5;&#x53E3;&#x7684;&#x5BF9;&#x8C61;&#x3002;</p>
+<p><code>Node.js</code> &#x63D0;&#x4F9B;&#x4E86;&#x591A;&#x79CD;&#x6D41;&#x5BF9;&#x8C61;&#x3002; &#x4F8B;&#x5982;&#xFF0C;&#x5BF9; <code>http</code> &#x670D;&#x52A1;&#x5668;&#x53D1;&#x8D77;&#x8BF7;&#x6C42;&#x7684; <code>request</code>  &#x5BF9;&#x8C61;&#x5C31;&#x662F;&#x4E00;&#x4E2A; <code>Stream</code>&#x3002;</p>
+<h3 id="&#x4E00;&#x3001;&#x6D41;&#x7684;&#x7C7B;&#x578B;">&#x4E00;&#x3001;&#x6D41;&#x7684;&#x7C7B;&#x578B;</h3>
+<p><code>Node.js</code> &#x4E2D;&#x6709;&#x56DB;&#x79CD;&#x57FA;&#x672C;&#x7684;&#x6D41;&#x7C7B;&#x578B;&#xFF1A;</p>
+<ul>
+<li><a href="http://nodejs.cn/s/9JUnJ8" target="_blank"><code>Writable</code></a> - &#x53EF;&#x5199;&#x5165;&#x6570;&#x636E;&#x7684;&#x6D41;&#xFF08;&#x4F8B;&#x5982; <a href="http://nodejs.cn/s/VdSJQa" target="_blank"><code>fs.createWriteStream()</code></a>&#xFF09;&#x3002;</li>
+<li><a href="http://nodejs.cn/s/YuDKX1" target="_blank"><code>Readable</code></a> - &#x53EF;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x7684;&#x6D41;&#xFF08;&#x4F8B;&#x5982; <a href="http://nodejs.cn/s/wiVPXD" target="_blank"><code>fs.createReadStream()</code></a>&#xFF09;&#x3002;</li>
+<li><a href="http://nodejs.cn/s/2iRabr" target="_blank"><code>Duplex</code></a> - &#x53EF;&#x8BFB;&#x53C8;&#x53EF;&#x5199;&#x7684;&#x6D41;&#xFF08;&#x4F8B;&#x5982; <a href="http://nodejs.cn/s/wsJ1o1" target="_blank"><code>net.Socket</code></a>&#xFF09;&#x3002;</li>
+<li><a href="http://nodejs.cn/s/fhVJQM" target="_blank"><code>Transform</code></a> - &#x5728;&#x8BFB;&#x5199;&#x8FC7;&#x7A0B;&#x4E2D;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x6216;&#x8F6C;&#x6362;&#x6570;&#x636E;&#x7684; <code>Duplex</code> &#x6D41;&#xFF08;&#x4F8B;&#x5982; <a href="http://nodejs.cn/s/n6ED45" target="_blank"><code>zlib.createDeflate()</code></a>&#xFF09;&#x3002;</li>
+</ul>
+<p>&#x6B64;&#x5916;&#xFF0C;&#x8BE5;&#x6A21;&#x5757;&#x8FD8;&#x5305;&#x62EC;&#x5B9E;&#x7528;&#x51FD;&#x6570; <a href="http://nodejs.cn/s/fnFy4m" target="_blank"><code>stream.pipeline()</code></a>&#x3001;<a href="http://nodejs.cn/s/DjDduq" target="_blank"><code>stream.finished()</code></a> &#x548C; <a href="http://nodejs.cn/s/bSCxhZ" target="_blank"><code>stream.Readable.from()</code></a>&#x3002;</p>
+<p>&#x6240;&#x6709;&#x7684;&#x6D41;&#x90FD;&#x662F; <a href="http://nodejs.cn/s/pGAddE" target="_blank"><code>EventEmitter</code></a> &#x7684;&#x5B9E;&#x4F8B;&#x3002;&#x5E38;&#x7528;&#x7684;&#x4E8B;&#x4EF6;&#x6709;&#xFF1A;</p>
+<ul>
+<li><code>data</code> - &#x5F53;&#x6709;&#x6570;&#x636E;&#x53EF;&#x8BFB;&#x65F6;&#x89E6;&#x53D1;&#x3002;</li>
+<li><code>end</code> - &#x6CA1;&#x6709;&#x66F4;&#x591A;&#x7684;&#x6570;&#x636E;&#x53EF;&#x8BFB;&#x65F6;&#x89E6;&#x53D1;&#x3002;</li>
+<li><code>error</code> - &#x5728;&#x63A5;&#x6536;&#x548C;&#x5199;&#x5165;&#x8FC7;&#x7A0B;&#x4E2D;&#x53D1;&#x751F;&#x9519;&#x8BEF;&#x65F6;&#x89E6;&#x53D1;&#x3002;</li>
+<li><code>finish</code> - &#x6240;&#x6709;&#x6570;&#x636E;&#x5DF2;&#x88AB;&#x5199;&#x5165;&#x5230;&#x5E95;&#x5C42;&#x7CFB;&#x7EDF;&#x65F6;&#x89E6;&#x53D1;&#x3002;</li>
+</ul>
+<p>&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x4ECB;&#x7ECD;&#x4E0B;&#x5E38;&#x89C1;&#x7684;&#x6D41;&#x64CD;&#x4F5C;&#x3002;</p>
+<h3 id="&#x4E8C;&#x3001;&#x4ECE;&#x6D41;&#x4E2D;&#x8BFB;&#x53D6;&#x6570;&#x636E;">&#x4E8C;&#x3001;&#x4ECE;&#x6D41;&#x4E2D;&#x8BFB;&#x53D6;&#x6570;&#x636E;</h3>
+<p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A; <code>test.txt</code> &#x6587;&#x4EF6;&#xFF1A;&#x5199;&#x5165;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#xFF1A;</p>
+<pre><code>node.togoblog.cn
+</code></pre><p><code>index.js</code> &#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;fs&quot;</span>);
+
+<span class="hljs-keyword">let</span> data = <span class="hljs-string">&apos;&apos;</span>;
+
+<span class="hljs-comment">// &#x521B;&#x5EFA;&#x53EF;&#x8BFB;&#x6D41;</span>
+<span class="hljs-keyword">const</span> readerStream = fs.createReadStream(<span class="hljs-string">&apos;test.txt&apos;</span>);
+
+<span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x7F16;&#x7801;&#x4E3A; utf8&#x3002;</span>
+readerStream.setEncoding(<span class="hljs-string">&apos;UTF8&apos;</span>);
+
+<span class="hljs-comment">// &#x5904;&#x7406;&#x6D41;&#x4E8B;&#x4EF6; --&gt; data, end, and error</span>
+readerStream.on(<span class="hljs-string">&apos;data&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">chunk</span>) </span>{
+  data += chunk;
+});
+
+readerStream.on(<span class="hljs-string">&apos;end&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(data);
+});
+
+readerStream.on(<span class="hljs-string">&apos;error&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(err.stack);
+});
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&quot;</span>);
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code class="lang-javascript">&gt; node index.js
+&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x5B8C;&#x6BD5;
+node.togoblog.cn
+</code></pre>
+<h3 id="&#x4E09;&#x3001;&#x5199;&#x5165;&#x6D41;">&#x4E09;&#x3001;&#x5199;&#x5165;&#x6D41;</h3>
+<p><code>index.js</code>&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;fs&quot;</span>);
+
+<span class="hljs-keyword">const</span> data = <span class="hljs-string">&apos;node.togoblog.cn&apos;</span>;
+
+<span class="hljs-comment">// &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x5199;&#x5165;&#x7684;&#x6D41;&#xFF0C;&#x5199;&#x5165;&#x5230;&#x6587;&#x4EF6; output.txt &#x4E2D;</span>
+<span class="hljs-keyword">const</span> writerStream = fs.createWriteStream(<span class="hljs-string">&apos;output.txt&apos;</span>);
+
+<span class="hljs-comment">// &#x4F7F;&#x7528; utf8 &#x7F16;&#x7801;&#x5199;&#x5165;&#x6570;&#x636E;</span>
+writerStream.write(data, <span class="hljs-string">&apos;UTF8&apos;</span>);
+
+<span class="hljs-comment">// &#x6807;&#x8BB0;&#x6587;&#x4EF6;&#x672B;&#x5C3E;</span>
+writerStream.end();
+
+<span class="hljs-comment">// &#x5904;&#x7406;&#x6D41;&#x4E8B;&#x4EF6; --&gt; data, end, and error</span>
+writerStream.on(<span class="hljs-string">&apos;finish&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;&#x5199;&#x5165;&#x5B8C;&#x6210;&#x3002;&quot;</span>);
+});
+
+writerStream.on(<span class="hljs-string">&apos;error&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(err.stack);
+});
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&quot;</span>);
+</code></pre>
+<p>&#x4EE5;&#x4E0A;&#x7A0B;&#x5E8F;&#x4F1A;&#x5C06; <code>data</code> &#x53D8;&#x91CF;&#x7684;&#x6570;&#x636E;&#x5199;&#x5165;&#x5230; <code>output.txt</code> &#x6587;&#x4EF6;&#x4E2D;&#x3002;&#x4EE3;&#x7801;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-javascript">&gt; node main.js
+&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x5B8C;&#x6BD5;
+&#x5199;&#x5165;&#x5B8C;&#x6210;&#x3002;
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A; <code>output.txt</code> &#x6587;&#x4EF6;&#xFF0C;&#x76F8;&#x5E94;&#x7684;&#x6570;&#x636E;&#x4E5F;&#x88AB;&#x5199;&#x5165;&#x8FDB;&#x53BB;&#x4E86;&#x3002;</p>
+<h3 id="&#x56DB;&#x3001;&#x7BA1;&#x9053;&#x6D41;">&#x56DB;&#x3001;&#x7BA1;&#x9053;&#x6D41;</h3>
+<p>&#x7BA1;&#x9053;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x8F93;&#x51FA;&#x6D41;&#x5230;&#x8F93;&#x5165;&#x6D41;&#x7684;&#x673A;&#x5236;&#x3002;&#x901A;&#x5E38;&#x6211;&#x4EEC;&#x7528;&#x4E8E;&#x4ECE;&#x4E00;&#x4E2A;&#x6D41;&#x4E2D;&#x83B7;&#x53D6;&#x6570;&#x636E;&#x5E76;&#x5C06;&#x6570;&#x636E;&#x4F20;&#x9012;&#x5230;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x6D41;&#x4E2D;&#x3002;</p>
+<p>&#x4EE5;&#x4E0B;&#x5B9E;&#x4F8B;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x8BFB;&#x53D6;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x5E76;&#x5C06;&#x5185;&#x5BB9;&#x5199;&#x5165;&#x5230;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x4E2D;&#x3002;</p>
+<p>&#x521B;&#x5EFA;&#x4E00;&#x4E2A; <code>input.txt</code> &#x6587;&#x4EF6;&#xFF0C;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>node.togoblog.cn
+&#x7BA1;&#x9053;&#x6D41;&#x64CD;&#x4F5C;&#x5B9E;&#x4F8B;
+</code></pre><p><code>index.js</code> &#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;fs&quot;</span>);
+
+<span class="hljs-comment">// &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x53EF;&#x8BFB;&#x6D41;</span>
+<span class="hljs-keyword">const</span> readerStream = fs.createReadStream(<span class="hljs-string">&apos;input.txt&apos;</span>);
+
+<span class="hljs-comment">// &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x53EF;&#x5199;&#x6D41;</span>
+<span class="hljs-keyword">const</span> writerStream = fs.createWriteStream(<span class="hljs-string">&apos;output.txt&apos;</span>);
+
+<span class="hljs-comment">// &#x7BA1;&#x9053;&#x8BFB;&#x5199;&#x64CD;&#x4F5C;</span>
+<span class="hljs-comment">// &#x8BFB;&#x53D6; input.txt &#x6587;&#x4EF6;&#x5185;&#x5BB9;&#xFF0C;&#x5E76;&#x5C06;&#x5185;&#x5BB9;&#x5199;&#x5165;&#x5230; output.txt &#x6587;&#x4EF6;&#x4E2D;</span>
+readerStream.pipe(writerStream);
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&quot;</span>);
+</code></pre>
+<p>&#x4EE3;&#x7801;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-javascript">&gt; node index.js
+&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x5B8C;&#x6BD5;
+</code></pre>
+<p>&#x67E5;&#x770B; <code>output.txt</code> &#x6587;&#x4EF6;&#x7684;&#x5185;&#x5BB9;&#xFF1A;</p>
+<pre><code class="lang-javascript">&gt; cat output.txt
+node.togoblog.cn
+&#x7BA1;&#x9053;&#x6D41;&#x64CD;&#x4F5C;&#x5B9E;&#x4F8B;
+</code></pre>
+<h3 id="&#x4E94;&#x3001;&#x94FE;&#x5F0F;&#x6D41;">&#x4E94;&#x3001;&#x94FE;&#x5F0F;&#x6D41;</h3>
+<p>&#x94FE;&#x5F0F;&#x662F;&#x901A;&#x8FC7;&#x8FDE;&#x63A5;&#x8F93;&#x51FA;&#x6D41;&#x5230;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x6D41;&#x5E76;&#x521B;&#x5EFA;&#x591A;&#x4E2A;&#x5BF9;&#x4E2A;&#x6D41;&#x64CD;&#x4F5C;&#x94FE;&#x7684;&#x673A;&#x5236;&#x3002;&#x94FE;&#x5F0F;&#x6D41;&#x4E00;&#x822C;&#x7528;&#x4E8E;&#x7BA1;&#x9053;&#x64CD;&#x4F5C;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x5C31;&#x662F;&#x7528;&#x7BA1;&#x9053;&#x548C;&#x94FE;&#x5F0F;&#x6765;&#x538B;&#x7F29;&#x548C;&#x89E3;&#x538B;&#x6587;&#x4EF6;&#x3002;</p>
+<p>&#x521B;&#x5EFA; <code>compress.js</code> &#x6587;&#x4EF6;, &#x4EE3;&#x7801;&#x5185;&#x5BB9;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;fs&quot;</span>);
+<span class="hljs-keyword">const</span> zlib = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;zlib&apos;</span>);
+
+<span class="hljs-comment">// &#x538B;&#x7F29; input.txt &#x6587;&#x4EF6;&#x4E3A; input.txt.gz</span>
+fs.createReadStream(<span class="hljs-string">&apos;input.txt&apos;</span>)
+  .pipe(zlib.createGzip())
+  .pipe(fs.createWriteStream(<span class="hljs-string">&apos;input.txt.gz&apos;</span>));
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;&#x6587;&#x4EF6;&#x538B;&#x7F29;&#x5B8C;&#x6210;&#x3002;&quot;</span>);
+</code></pre>
+<p>&#x4EE3;&#x7801;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-javascript">&gt; node compress.js
+&#x6587;&#x4EF6;&#x538B;&#x7F29;&#x5B8C;&#x6210;&#x3002;
+</code></pre>
+<p>&#x6267;&#x884C;&#x5B8C;&#x4EE5;&#x4E0A;&#x64CD;&#x4F5C;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x4E0B;&#x751F;&#x6210;&#x4E86; <code>input.txt</code> &#x7684;&#x538B;&#x7F29;&#x6587;&#x4EF6; <code>input.txt.gz</code>&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x89E3;&#x538B;&#x8BE5;&#x6587;&#x4EF6;&#xFF0C;&#x521B;&#x5EFA; <code>decompress.js</code> &#x6587;&#x4EF6;&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;fs&quot;</span>);
+<span class="hljs-keyword">const</span> zlib = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;zlib&apos;</span>);
+
+<span class="hljs-comment">// &#x89E3;&#x538B; input.txt.gz &#x6587;&#x4EF6;&#x4E3A; input.txt</span>
+fs.createReadStream(<span class="hljs-string">&apos;input.txt.gz&apos;</span>)
+  .pipe(zlib.createGunzip())
+  .pipe(fs.createWriteStream(<span class="hljs-string">&apos;input.txt&apos;</span>));
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;&#x6587;&#x4EF6;&#x89E3;&#x538B;&#x5B8C;&#x6210;&#x3002;&quot;</span>);
+</code></pre>
+<p>&#x4EE3;&#x7801;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-javascript">&gt; node decompress.js
+&#x6587;&#x4EF6;&#x89E3;&#x538B;&#x5B8C;&#x6210;&#x3002;
+</code></pre>
+
                                 
                                 </section>
                             
@@ -501,7 +651,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"十、Stream(流)","level":"1.11","depth":1,"next":{"title":"十一、文件操作","level":"1.12","depth":1,"path":"nodejs-fs/README.md","ref":"nodejs-fs/README.md","articles":[]},"previous":{"title":"九、Buffer(缓冲区)","level":"1.10","depth":1,"path":"Buffer/README.md","ref":"Buffer/README.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Stream/README.md","mtime":"2019-06-24T10:08:18.717Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-28T07:02:42.499Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"十、Stream(流)","level":"1.11","depth":1,"next":{"title":"十一、文件操作","level":"1.12","depth":1,"path":"nodejs-fs/README.md","ref":"nodejs-fs/README.md","articles":[]},"previous":{"title":"九、Buffer(缓冲区)","level":"1.10","depth":1,"path":"Buffer/README.md","ref":"Buffer/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Stream/README.md","mtime":"2019-08-28T08:27:02.491Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-28T08:27:32.076Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
