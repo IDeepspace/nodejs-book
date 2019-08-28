@@ -458,7 +458,155 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h2 id="eventemitter">EventEmitter</h2>
+<p><code>Node.js</code> &#x6240;&#x6709;&#x7684;&#x5F02;&#x6B65; <code>I/O</code> &#x64CD;&#x4F5C;&#x5728;&#x5B8C;&#x6210;&#x65F6;&#x90FD;&#x4F1A;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x5230;&#x4E8B;&#x4EF6;&#x961F;&#x5217;&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;<a href="http://nodejs.cn/s/gBYjux" target="_blank"><code>net.Server</code></a> &#x4F1A;&#x5728;&#x6BCF;&#x6B21;&#x6709;&#x65B0;&#x8FDE;&#x63A5;&#x65F6;&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;&#xFF0C;<a href="http://nodejs.cn/s/C3Eioq" target="_blank"><code>fs.ReadStream</code></a> &#x4F1A;&#x5728;&#x6253;&#x5F00;&#x6587;&#x4EF6;&#x65F6;&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;&#xFF0C;<a href="http://nodejs.cn/s/kUvpNm" target="_blank"><code>stream</code></a> &#x4F1A;&#x5728;&#x6570;&#x636E;&#x53EF;&#x8BFB;&#x65F6;&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;&#x3002;</p>
+<p>&#x6240;&#x6709;&#x80FD;&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;&#x7684;&#x5BF9;&#x8C61;&#x90FD;&#x662F; <code>EventEmitter</code> &#x7C7B;&#x7684;&#x5B9E;&#x4F8B;&#x3002; </p>
+<h3 id="&#x4E00;&#x3001;eventemitter-&#x7C7B;">&#x4E00;&#x3001;EventEmitter &#x7C7B;</h3>
+<p><code>events</code> &#x6A21;&#x5757;&#x53EA;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF1A; <code>events.EventEmitter</code>&#x3002;<code>EventEmitter</code> &#x7684;&#x6838;&#x5FC3;&#x5C31;&#x662F;&#x4E8B;&#x4EF6;&#x89E6;&#x53D1;&#x4E0E;&#x4E8B;&#x4EF6;&#x76D1;&#x542C;&#x5668;&#x529F;&#x80FD;&#x7684;&#x5C01;&#x88C5;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>require(&apos;events&apos;);</code> &#x6765;&#x8BBF;&#x95EE;&#x8BE5;&#x6A21;&#x5757;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// &#x5F15;&#x5165; events &#x6A21;&#x5757;</span>
+<span class="hljs-keyword">const</span> Event = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;events&apos;</span>);
+<span class="hljs-comment">// &#x521B;&#x5EFA; eventEmitter &#x5BF9;&#x8C61;</span>
+<span class="hljs-keyword">const</span> eventEmitter = <span class="hljs-keyword">new</span> Event.EventEmitter();
+</code></pre>
+<p><code>EventEmitter</code> &#x5BF9;&#x8C61;&#x5982;&#x679C;&#x5728;&#x5B9E;&#x4F8B;&#x5316;&#x65F6;&#x53D1;&#x751F;&#x9519;&#x8BEF;&#xFF0C;&#x4F1A;&#x89E6;&#x53D1; <code>error</code> &#x4E8B;&#x4EF6;&#x3002;</p>
+<p>&#x5F53;&#x6DFB;&#x52A0;&#x65B0;&#x7684;&#x76D1;&#x542C;&#x5668;&#x65F6;&#xFF0C;<code>newListener</code> &#x4E8B;&#x4EF6;&#x4F1A;&#x89E6;&#x53D1;&#xFF0C;&#x5F53;&#x76D1;&#x542C;&#x5668;&#x88AB;&#x79FB;&#x9664;&#x65F6;&#xFF0C;<code>removeListener</code> &#x4E8B;&#x4EF6;&#x88AB;&#x89E6;&#x53D1;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x7528;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x4F8B;&#x5B50;&#x8BF4;&#x660E; <code>EventEmitter</code> &#x7684;&#x7528;&#x6CD5;&#xFF1A;</p>
+<p><code>index.js</code> &#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// &#x5F15;&#x5165; events &#x6A21;&#x5757;</span>
+<span class="hljs-keyword">const</span> Event = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;events&apos;</span>);
+<span class="hljs-comment">// &#x521B;&#x5EFA; eventEmitter &#x5BF9;&#x8C61;</span>
+<span class="hljs-keyword">const</span> eventEmitter = <span class="hljs-keyword">new</span> Event.EventEmitter();
+
+eventEmitter.on(<span class="hljs-string">&apos;someEvent&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;someEvent &#x4E8B;&#x4EF6;&#x89E6;&#x53D1;&apos;</span>);
+});
+
+setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  eventEmitter.emit(<span class="hljs-string">&apos;someEvent&apos;</span>);
+}, <span class="hljs-number">1000</span>);
+</code></pre>
+<p>&#x6267;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code class="lang-javascript">&gt; node index.js
+someEvent &#x4E8B;&#x4EF6;&#x89E6;&#x53D1;
+</code></pre>
+<p>&#x8FD0;&#x884C;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#xFF0C;<code>1</code> &#x79D2;&#x540E;&#x63A7;&#x5236;&#x53F0;&#x8F93;&#x51FA;&#x4E86; &apos; <code>someEvent</code> &#x4E8B;&#x4EF6;&#x89E6;&#x53D1;&apos;&#x3002;&#x5176;&#x539F;&#x7406;&#x662F; <code>event</code> &#x5BF9;&#x8C61;&#x6CE8;&#x518C;&#x4E86;&#x4E8B;&#x4EF6; <code>someEvent</code> &#x7684;&#x4E00;&#x4E2A;&#x76D1;&#x542C;&#x5668;&#xFF0C;&#x7136;&#x540E;&#x6211;&#x4EEC;&#x901A;&#x8FC7; <code>setTimeout</code> &#x5728; <code>1000</code> &#x6BEB;&#x79D2;&#x540E;&#x5411; <code>event</code> &#x5BF9;&#x8C61;&#x53D1;&#x9001;&#x4E8B;&#x4EF6; <code>someEvent</code>&#xFF0C;&#x6B64;&#x65F6;&#x4F1A;&#x8C03;&#x7528; <code>someEvent</code> &#x7684;&#x76D1;&#x542C;&#x5668;&#x3002;</p>
+<p><code>EventEmitter</code> &#x7684;&#x6BCF;&#x4E2A;&#x4E8B;&#x4EF6;&#x7531;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x540D;&#x548C;&#x82E5;&#x5E72;&#x4E2A;&#x53C2;&#x6570;&#x7EC4;&#x6210;&#xFF0C;&#x4E8B;&#x4EF6;&#x540D;&#x662F;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x901A;&#x5E38;&#x8868;&#x8FBE;&#x4E00;&#x5B9A;&#x7684;&#x8BED;&#x4E49;&#x3002;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x4E8B;&#x4EF6;&#xFF0C;<code>EventEmitter</code> &#x652F;&#x6301; &#x82E5;&#x5E72;&#x4E2A;&#x4E8B;&#x4EF6;&#x76D1;&#x542C;&#x5668;&#x3002;</p>
+<p>&#x5F53;&#x4E8B;&#x4EF6;&#x89E6;&#x53D1;&#x65F6;&#xFF0C;&#x6CE8;&#x518C;&#x5230;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x7684;&#x4E8B;&#x4EF6;&#x76D1;&#x542C;&#x5668;&#x88AB;&#x4F9D;&#x6B21;&#x540C;&#x6B65;&#x8C03;&#x7528;&#xFF0C;&#x4E8B;&#x4EF6;&#x53C2;&#x6570;&#x4F5C;&#x4E3A;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x3002;</p>
+<p>&#x770B;&#x770B;&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> events = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;events&apos;</span>);
+<span class="hljs-keyword">const</span> emitter = <span class="hljs-keyword">new</span> events.EventEmitter();
+
+emitter.on(<span class="hljs-string">&apos;someEvent&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">arg1, arg2</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;listener1&apos;</span>, arg1, arg2);
+});
+
+emitter.on(<span class="hljs-string">&apos;someEvent&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">arg1, arg2</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;listener2&apos;</span>, arg1, arg2);
+});
+
+emitter.emit(<span class="hljs-string">&apos;someEvent&apos;</span>, <span class="hljs-string">&apos;arg1 &#x53C2;&#x6570;&apos;</span>, <span class="hljs-string">&apos;arg2 &#x53C2;&#x6570;&apos;</span>);
+</code></pre>
+<p>&#x6267;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code class="lang-javascript">&gt; node index.js
+listener1 arg1 &#x53C2;&#x6570; arg2 &#x53C2;&#x6570;
+listener2 arg1 &#x53C2;&#x6570; arg2 &#x53C2;&#x6570;
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;<code>emitter</code> &#x4E3A;&#x4E8B;&#x4EF6; <code>someEvent</code> &#x6CE8;&#x518C;&#x4E86;&#x4E24;&#x4E2A;&#x4E8B;&#x4EF6;&#x76D1;&#x542C;&#x5668;&#xFF0C;&#x7136;&#x540E;&#x89E6;&#x53D1;&#x4E86; <code>someEvent</code> &#x4E8B;&#x4EF6;&#x3002;&#x4ECE;&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x4E2D;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4E24;&#x4E2A;&#x4E8B;&#x4EF6;&#x76D1;&#x542C;&#x5668;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x5148;&#x540E;&#x88AB;&#x8C03;&#x7528;&#xFF08;&#x540C;&#x6B65;&#x7684;&#xFF09;&#x3002;</p>
+<p><code>EventEmitter</code> &#x63D0;&#x4F9B;&#x4E86;&#x591A;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x5982; <code>on</code> &#x548C; <code>emit</code>&#x3002;<code>on</code> &#x51FD;&#x6570;&#x7528;&#x4E8E;&#x7ED1;&#x5B9A;&#x4E8B;&#x4EF6;&#x51FD;&#x6570;&#xFF0C;<code>emit</code> &#x5C5E;&#x6027;&#x7528;&#x4E8E;&#x89E6;&#x53D1;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x3002;</p>
+<h3 id="&#x4E8C;&#x3001;&#x5C06;&#x53C2;&#x6570;&#x548C;-this-&#x4F20;&#x7ED9;&#x76D1;&#x542C;&#x5668;">&#x4E8C;&#x3001;&#x5C06;&#x53C2;&#x6570;&#x548C; this &#x4F20;&#x7ED9;&#x76D1;&#x542C;&#x5668;</h3>
+<p><code>eventEmitter.emit()</code> &#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x4F20;&#x4EFB;&#x610F;&#x6570;&#x91CF;&#x7684;&#x53C2;&#x6570;&#x5230;&#x76D1;&#x542C;&#x5668;&#x51FD;&#x6570;&#x3002; &#x5F53;&#x76D1;&#x542C;&#x5668;&#x51FD;&#x6570;&#x88AB;&#x8C03;&#x7528;&#x65F6;&#xFF0C; <code>this</code> &#x5173;&#x952E;&#x8BCD;&#x4F1A;&#x88AB;&#x6307;&#x5411;&#x76D1;&#x542C;&#x5668;&#x6240;&#x7ED1;&#x5B9A;&#x7684; <code>EventEmitter</code> &#x5B9E;&#x4F8B;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> events = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;events&apos;</span>);
+<span class="hljs-keyword">const</span> emitter = <span class="hljs-keyword">new</span> events.EventEmitter();
+
+emitter.on(<span class="hljs-string">&apos;event&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">a, b</span>) </span>{
+  <span class="hljs-built_in">console</span>.log(a, b, <span class="hljs-keyword">this</span>, <span class="hljs-keyword">this</span> === emitter);
+});
+<span class="hljs-comment">// &#x7ED3;&#x679C;&#x6253;&#x5370;:</span>
+<span class="hljs-comment">//   a b MyEmitter {</span>
+<span class="hljs-comment">//     domain: null,</span>
+<span class="hljs-comment">//     _events: { event: [Function] },</span>
+<span class="hljs-comment">//     _eventsCount: 1,</span>
+<span class="hljs-comment">//     _maxListeners: undefined } true</span>
+emitter.emit(<span class="hljs-string">&apos;event&apos;</span>, <span class="hljs-string">&apos;a&apos;</span>, <span class="hljs-string">&apos;b&apos;</span>);
+</code></pre>
+<p>&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>ES6</code> &#x7684;&#x7BAD;&#x5934;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;&#x76D1;&#x542C;&#x5668;&#x3002;&#x4F46; <code>this</code> &#x5173;&#x952E;&#x8BCD;&#x4E0D;&#x4F1A;&#x6307;&#x5411; <code>EventEmitter</code> &#x5B9E;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> events = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;events&apos;</span>);
+<span class="hljs-keyword">const</span> emitter = <span class="hljs-keyword">new</span> events.EventEmitter();
+
+emitter.on(<span class="hljs-string">&apos;event&apos;</span>, (a, b) =&gt; {
+  <span class="hljs-built_in">console</span>.log(a, b, <span class="hljs-keyword">this</span>); <span class="hljs-comment">// &#x6253;&#x5370;: a b {}</span>
+});
+
+emitter.emit(<span class="hljs-string">&apos;event&apos;</span>, <span class="hljs-string">&apos;a&apos;</span>, <span class="hljs-string">&apos;b&apos;</span>);
+</code></pre>
+<h3 id="&#x4E09;&#x3001;&#x5F02;&#x6B65;-vs-&#x540C;&#x6B65;">&#x4E09;&#x3001;&#x5F02;&#x6B65; VS &#x540C;&#x6B65;</h3>
+<p><code>EventEmitter</code> &#x4F1A;&#x6309;&#x7167;&#x76D1;&#x542C;&#x5668;&#x6CE8;&#x518C;&#x7684;&#x987A;&#x5E8F;&#x540C;&#x6B65;&#x5730;&#x8C03;&#x7528;&#x6240;&#x6709;&#x76D1;&#x542C;&#x5668;&#x3002; &#x6240;&#x4EE5;&#x5FC5;&#x987B;&#x786E;&#x4FDD;&#x4E8B;&#x4EF6;&#x7684;&#x6392;&#x5E8F;&#x6B63;&#x786E;&#xFF0C;&#x4E14;&#x907F;&#x514D;&#x7ADE;&#x6001;&#x6761;&#x4EF6;&#x3002; &#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>setImmediate()</code> &#x6216; <code>process.nextTick()</code> &#x5207;&#x6362;&#x5230;&#x5F02;&#x6B65;&#x6A21;&#x5F0F;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> events = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;events&apos;</span>);
+<span class="hljs-keyword">const</span> emitter = <span class="hljs-keyword">new</span> events.EventEmitter();
+
+emitter.on(<span class="hljs-string">&apos;event&apos;</span>, (a, b) =&gt; {
+  setImmediate(() =&gt; {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;&#x5F02;&#x6B65;&#x8FDB;&#x884C;&apos;</span>);
+  });
+  <span class="hljs-built_in">console</span>.log(a, b);
+});
+emitter.emit(<span class="hljs-string">&apos;event&apos;</span>, <span class="hljs-string">&apos;a&apos;</span>, <span class="hljs-string">&apos;b&apos;</span>);
+
+<span class="hljs-comment">// &#x6253;&#x5370;&#x7ED3;&#x679C;</span>
+<span class="hljs-comment">// a b</span>
+<span class="hljs-comment">// &#x5F02;&#x6B65;&#x8FDB;&#x884C;</span>
+</code></pre>
+<h3 id="&#x56DB;&#x3001;&#x4EC5;&#x5904;&#x7406;&#x4E8B;&#x4EF6;&#x4E00;&#x6B21;">&#x56DB;&#x3001;&#x4EC5;&#x5904;&#x7406;&#x4E8B;&#x4EF6;&#x4E00;&#x6B21;</h3>
+<p>&#x5F53;&#x4F7F;&#x7528; <code>eventEmitter.on()</code> &#x6CE8;&#x518C;&#x76D1;&#x542C;&#x5668;&#x65F6;&#xFF0C;&#x76D1;&#x542C;&#x5668;&#x4F1A;&#x5728;&#x6BCF;&#x6B21;&#x89E6;&#x53D1;&#x547D;&#x540D;&#x4E8B;&#x4EF6;&#x65F6;&#x88AB;&#x8C03;&#x7528;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> events = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;events&apos;</span>);
+<span class="hljs-keyword">const</span> emitter = <span class="hljs-keyword">new</span> events.EventEmitter();
+
+<span class="hljs-keyword">let</span> m = <span class="hljs-number">0</span>;
+emitter.on(<span class="hljs-string">&apos;event&apos;</span>, () =&gt; {
+  <span class="hljs-built_in">console</span>.log(++m);
+});
+emitter.emit(<span class="hljs-string">&apos;event&apos;</span>); <span class="hljs-comment">// &#x6253;&#x5370;: 1</span>
+emitter.emit(<span class="hljs-string">&apos;event&apos;</span>); <span class="hljs-comment">// &#x6253;&#x5370;: 2</span>
+</code></pre>
+<p>&#x4F7F;&#x7528; <code>eventEmitter.once()</code> &#x53EF;&#x4EE5;&#x6CE8;&#x518C;&#x6700;&#x591A;&#x53EF;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x7684;&#x76D1;&#x542C;&#x5668;&#x3002; &#x5F53;&#x4E8B;&#x4EF6;&#x88AB;&#x89E6;&#x53D1;&#x65F6;&#xFF0C;&#x76D1;&#x542C;&#x5668;&#x4F1A;&#x88AB;&#x6CE8;&#x9500;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x8C03;&#x7528;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> events = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;events&apos;</span>);
+<span class="hljs-keyword">const</span> emitter = <span class="hljs-keyword">new</span> events.EventEmitter();
+
+<span class="hljs-keyword">let</span> m = <span class="hljs-number">0</span>;
+emitter.once(<span class="hljs-string">&apos;event&apos;</span>, () =&gt; {
+  <span class="hljs-built_in">console</span>.log(++m);
+});
+emitter.emit(<span class="hljs-string">&apos;event&apos;</span>); <span class="hljs-comment">// &#x6253;&#x5370;: 1</span>
+emitter.emit(<span class="hljs-string">&apos;event&apos;</span>); <span class="hljs-comment">// &#x4E0D;&#x89E6;&#x53D1;</span>
+</code></pre>
+<h3 id="&#x4E94;&#x3001;-&#x9519;&#x8BEF;&#x4E8B;&#x4EF6;">&#x4E94;&#x3001; &#x9519;&#x8BEF;&#x4E8B;&#x4EF6;</h3>
+<p>&#x5F53; <code>EventEmitter</code> &#x5B9E;&#x4F8B;&#x51FA;&#x9519;&#x65F6;&#xFF0C;&#x5E94;&#x8BE5;&#x89E6;&#x53D1; <code>error</code> &#x4E8B;&#x4EF6;&#x3002; &#x8FD9;&#x4E9B;&#x5728; <code>Node.js</code> &#x4E2D;&#x88AB;&#x89C6;&#x4E3A;&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x6CA1;&#x6709;&#x4E3A; <code>error</code> &#x4E8B;&#x4EF6;&#x6CE8;&#x518C;&#x76D1;&#x542C;&#x5668;&#xFF0C;&#x5219;&#x5F53; <code>error</code> &#x4E8B;&#x4EF6;&#x89E6;&#x53D1;&#x65F6;&#xFF0C;&#x4F1A;&#x629B;&#x51FA;&#x9519;&#x8BEF;&#x3001;&#x6253;&#x5370;&#x5806;&#x6808;&#x8DDF;&#x8E2A;&#x3001;&#x5E76;&#x9000;&#x51FA; Node.js &#x8FDB;&#x7A0B;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> events = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;events&apos;</span>);
+<span class="hljs-keyword">const</span> emitter = <span class="hljs-keyword">new</span> events.EventEmitter();
+
+emitter.emit(<span class="hljs-string">&apos;error&apos;</span>, <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&apos;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&apos;</span>));
+</code></pre>
+<p>&#x4E3A;&#x4E86;&#x9632;&#x6B62;&#x5D29;&#x6E83; <code>Node.js</code> &#x8FDB;&#x7A0B;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <a href="http://nodejs.cn/s/cnfQ9s" target="_blank"><code>domain</code></a> &#x6A21;&#x5757;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x5E76;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x597D;&#x7684;&#x5B9E;&#x8DF5;&#x3002;&#x4F5C;&#x4E3A;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#xFF0C;&#x6211;&#x4EEC;&#x5E94;&#x8BE5;&#x59CB;&#x7EC8;&#x4E3A; <code>error</code> &#x4E8B;&#x4EF6;&#x6CE8;&#x518C;&#x76D1;&#x542C;&#x5668;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> events = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;events&apos;</span>);
+<span class="hljs-keyword">const</span> emitter = <span class="hljs-keyword">new</span> events.EventEmitter();
+
+emitter.on(<span class="hljs-string">&apos;error&apos;</span>, (err) =&gt; {
+  <span class="hljs-built_in">console</span>.error(<span class="hljs-string">&apos;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&apos;</span>);
+});
+
+emitter.emit(<span class="hljs-string">&apos;error&apos;</span>, <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&apos;&#x9519;&#x8BEF;&apos;</span>)); <span class="hljs-comment">// &#x6253;&#x5370;&#xFF1A;&#x9519;&#x8BEF;&#x4FE1;&#x606F;</span>
+</code></pre>
+<h3 id="&#x516D;&#x3001;-&#x7EE7;&#x627F;-eventemitter">&#x516D;&#x3001; &#x7EE7;&#x627F; EventEmitter</h3>
+<p>&#x5927;&#x591A;&#x6570;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x4E0D;&#x4F1A;&#x76F4;&#x63A5;&#x4F7F;&#x7528; <code>EventEmitter</code>&#xFF0C;&#x800C;&#x662F;&#x5728;&#x5BF9;&#x8C61;&#x4E2D;&#x7EE7;&#x627F;&#x5B83;&#x3002;&#x5305;&#x62EC; <code>fs</code>&#x3001;<code>net</code>&#x3001; <code>http</code> &#x5728;&#x5185;&#x7684;&#xFF0C;&#x53EA;&#x8981;&#x662F;&#x652F;&#x6301;&#x4E8B;&#x4EF6;&#x54CD;&#x5E94;&#x7684;&#x6838;&#x5FC3;&#x6A21;&#x5757;&#x90FD;&#x662F; <code>EventEmitter</code> &#x7684;&#x5B50;&#x7C7B;&#x3002;</p>
+<p>&#x8FD9;&#x6837;&#x505A;&#x7684;&#x539F;&#x56E0;&#x6709;&#x4E24;&#x70B9;&#xFF1A;</p>
+<ul>
+<li>&#x9996;&#x5148;&#xFF0C;&#x5177;&#x6709;&#x67D0;&#x4E2A;&#x5B9E;&#x4F53;&#x529F;&#x80FD;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x4E8B;&#x4EF6;&#x7B26;&#x5408;&#x8BED;&#x4E49;&#xFF0C; &#x4E8B;&#x4EF6;&#x7684;&#x76D1;&#x542C;&#x548C;&#x53D1;&#x5C04;&#x5E94;&#x8BE5;&#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x65B9;&#x6CD5;&#x3002;</li>
+<li>&#x5176;&#x6B21;&#xFF0C;<code>JavaScript</code> &#x7684;&#x5BF9;&#x8C61;&#x673A;&#x5236;&#x662F;&#x57FA;&#x4E8E;&#x539F;&#x578B;&#x7684;&#xFF0C;&#x652F;&#x6301;&#x90E8;&#x5206;&#x591A;&#x91CD;&#x7EE7;&#x627F;&#xFF0C;&#x7EE7;&#x627F; <code>EventEmitter</code> &#x4E0D;&#x4F1A;&#x6253;&#x4E71;&#x5BF9;&#x8C61;&#x539F;&#x6709;&#x7684;&#x7EE7;&#x627F;&#x5173;&#x7CFB;&#x3002;</li>
+</ul>
+
                                 
                                 </section>
                             
@@ -501,7 +649,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"八、EventEmitter","level":"1.9","depth":1,"next":{"title":"九、Buffer(缓冲区)","level":"1.10","depth":1,"path":"Buffer/README.md","ref":"Buffer/README.md","articles":[]},"previous":{"title":"3. Async/Await","level":"1.8.3","depth":2,"path":"asynchronous/async/README.md","ref":"asynchronous/async/README.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"EventEmitter/README.md","mtime":"2019-06-24T10:08:18.716Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-26T09:39:51.361Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"八、EventEmitter","level":"1.9","depth":1,"next":{"title":"九、Buffer(缓冲区)","level":"1.10","depth":1,"path":"Buffer/README.md","ref":"Buffer/README.md","articles":[]},"previous":{"title":"3. Async/Await","level":"1.8.3","depth":2,"path":"asynchronous/async/README.md","ref":"asynchronous/async/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"EventEmitter/README.md","mtime":"2019-08-28T01:35:14.518Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-28T01:37:54.575Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
