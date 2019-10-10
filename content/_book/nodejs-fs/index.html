@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>十一、文件操作 · GitBook</title>
+        <title>十一、文件系统 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -314,7 +314,7 @@
                 <a href="./">
             
                     
-                    十一、文件操作
+                    十一、文件系统
             
                 </a>
             
@@ -430,7 +430,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >十一、文件操作</a>
+        <a href=".." >十一、文件系统</a>
     </h1>
 </div>
 
@@ -445,7 +445,197 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h2 id="&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;">&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;</h2>
+<p>&#x5728; <code>Node.js</code> &#x4E2D;&#xFF0C;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7684;&#x4EA4;&#x4E92;&#x662F;&#x975E;&#x5E38;&#x91CD;&#x8981;&#x7684;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x7684;&#x672C;&#x8D28;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x5C06;&#x672C;&#x5730;&#x7684;&#x6587;&#x4EF6;&#x53D1;&#x9001;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x3002;</p>
+<p><code>Node.js</code> &#x901A;&#x8FC7; <code>fs</code> &#x6A21;&#x5757;&#x6765;&#x548C;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x8FDB;&#x884C;&#x4EA4;&#x4E92;&#x3002;&#x8BE5;&#x6A21;&#x5757;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A; <code>API</code>&#xFF0C;&#x7528;&#x4E8E;&#x4EE5;&#x6A21;&#x4EFF;&#x6807;&#x51C6; <code>POSIX</code> &#x51FD;&#x6570;&#x7684;&#x65B9;&#x5F0F;&#x4E0E;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x8FDB;&#x884C;&#x4EA4;&#x4E92;&#x3002;</p>
+<p>&#x8981;&#x4F7F;&#x7528; <code>fs</code> &#x6A21;&#x5757;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;fs&apos;</span>);
+</code></pre>
+<h3 id="&#x4E00;&#x3001;&#x5F02;&#x6B65;&#x548C;&#x540C;&#x6B65;">&#x4E00;&#x3001;&#x5F02;&#x6B65;&#x548C;&#x540C;&#x6B65;</h3>
+<p><code>Node.js</code> &#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#xFF08;<code>fs</code> &#x6A21;&#x5757;&#xFF09;&#x6A21;&#x5757;&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x5747;&#x6709;&#x5F02;&#x6B65;&#x548C;&#x540C;&#x6B65;&#x7248;&#x672C;&#xFF0C;&#x4F8B;&#x5982;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x7684;&#x51FD;&#x6570;&#x6709;&#x5F02;&#x6B65;&#x7684;  <code>fs.readFile()</code>  &#x548C;&#x540C;&#x6B65;&#x7684; <code>fs.readFileSync()</code>&#x3002;</p>
+<ul>
+<li><p>&#x540C;&#x6B65;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4F1A;&#x963B;&#x585E;&#x7A0B;&#x5E8F;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x9664;&#x975E;&#x64CD;&#x4F5C;&#x5B8C;&#x6BD5;&#xFF0C;&#x5426;&#x5219;&#x4E0D;&#x4F1A;&#x5411;&#x4E0B;&#x6267;&#x884C;&#x4EE3;&#x7801;&#x3002;</p>
+</li>
+<li><p>&#x5F02;&#x6B65;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E0D;&#x4F1A;&#x963B;&#x585E;&#x7A0B;&#x5E8F;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x800C;&#x662F;&#x5728;&#x64CD;&#x4F5C;&#x5B8C;&#x6210;&#x65F6;&#xFF0C;&#x901A;&#x8FC7;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x5C06;&#x7ED3;&#x679C;&#x8FD4;&#x56DE;&#x3002;</p>
+</li>
+<li><p>&#x6BD4;&#x8D77;&#x540C;&#x6B65;&#xFF0C;&#x5F02;&#x6B65;&#x65B9;&#x6CD5;&#x6027;&#x80FD;&#x66F4;&#x9AD8;&#xFF0C;&#x901F;&#x5EA6;&#x66F4;&#x5FEB;&#xFF0C;&#x800C;&#x4E14;&#x6CA1;&#x6709;&#x963B;&#x585E;&#x3002;</p>
+</li>
+</ul>
+<p>&#x4E0B;&#x9762;&#x770B;&#x4E2A; <code>demo</code> &#xFF1A;</p>
+<p>&#x5148;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; <code>input.txt</code> &#x6587;&#x4EF6;&#xFF0C;&#x5199;&#x5165;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#xFF1A;</p>
+<pre><code>node.togoblog.cn
+</code></pre><p><code>index.js</code>&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;fs&quot;</span>);
+
+<span class="hljs-comment">// &#x5F02;&#x6B65;&#x8BFB;&#x53D6;</span>
+fs.readFile(<span class="hljs-string">&apos;input.txt&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, data</span>) </span>{
+  <span class="hljs-keyword">if</span> (err) {
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">console</span>.error(err);
+  }
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;&#x5F02;&#x6B65;&#x8BFB;&#x53D6;: &quot;</span> + data.toString());
+});
+
+<span class="hljs-comment">// &#x540C;&#x6B65;&#x8BFB;&#x53D6;</span>
+<span class="hljs-keyword">const</span> data = fs.readFileSync(<span class="hljs-string">&apos;input.txt&apos;</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;&#x540C;&#x6B65;&#x8BFB;&#x53D6;: &quot;</span> + data.toString());
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x3002;&quot;</span>);
+</code></pre>
+<p>&#x4EE3;&#x7801;&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code>&gt; node index.js
+&#x540C;&#x6B65;&#x8BFB;&#x53D6;: node.togoblog.cn
+
+&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x5B8C;&#x6BD5;&#x3002;
+&#x5F02;&#x6B65;&#x8BFB;&#x53D6;: node.togoblog.cn
+</code></pre><h3 id="&#x4E8C;&#x3001;&#x6253;&#x5F00;&#x6587;&#x4EF6;">&#x4E8C;&#x3001;&#x6253;&#x5F00;&#x6587;&#x4EF6;</h3>
+<p><strong>&#x8BED;&#x6CD5;&#xFF1A;</strong></p>
+<pre><code class="lang-javascript">fs.open(path, flags[, mode], callback)
+</code></pre>
+<p><strong>&#x53C2;&#x6570;&#xFF1A;</strong></p>
+<ul>
+<li><code>path</code> - &#x6587;&#x4EF6;&#x7684;&#x8DEF;&#x5F84;&#x3002;</li>
+<li><code>flags</code> - &#x6587;&#x4EF6;&#x6253;&#x5F00;&#x7684;&#x884C;&#x4E3A;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A; <code>r</code>&#x3002;</li>
+<li><code>mode</code> - &#x8BBE;&#x7F6E;&#x6587;&#x4EF6;&#x6A21;&#x5F0F;(&#x6743;&#x9650;)&#xFF0C;&#x6587;&#x4EF6;&#x521B;&#x5EFA;&#x9ED8;&#x8BA4;&#x6743;&#x9650;&#x4E3A; <code>0666</code> (&#x53EF;&#x8BFB;&#xFF0C;&#x53EF;&#x5199;)&#x3002;</li>
+<li><code>callback</code> - &#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x5E26;&#x6709;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x5982;&#xFF1A;<code>callback(err, fd)</code>&#x3002;</li>
+</ul>
+<p><code>flags</code> &#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#xFF1A;<a href="http://nodejs.cn/api/fs.html#fs_file_system_flags" target="_blank">http://nodejs.cn/api/fs.html#fs_file_system_flags</a></p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x521B;&#x5EFA; <code>index.js</code> &#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x6253;&#x5F00; <code>input.txt</code> &#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x8BFB;&#x5199;&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;fs&quot;</span>);
+
+<span class="hljs-comment">// &#x5F02;&#x6B65;&#x6253;&#x5F00;&#x6587;&#x4EF6;</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;&#x51C6;&#x5907;&#x6253;&#x5F00;&#x6587;&#x4EF6;&#xFF01;&quot;</span>);
+fs.open(<span class="hljs-string">&apos;input.txt&apos;</span>, <span class="hljs-string">&apos;r+&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, fd</span>) </span>{
+  <span class="hljs-keyword">if</span> (err) {
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">console</span>.error(err);
+  }
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;&#x6587;&#x4EF6;&#x6253;&#x5F00;&#x6210;&#x529F;&#xFF01;&quot;</span>);
+});
+</code></pre>
+<p>&#x4EE3;&#x7801;&#x6267;&#x884C;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-javascript">&gt; node index.js
+&#x51C6;&#x5907;&#x6253;&#x5F00;&#x6587;&#x4EF6;&#xFF01;
+&#x6587;&#x4EF6;&#x6253;&#x5F00;&#x6210;&#x529F;
+</code></pre>
+<h3 id="&#x4E09;&#x3001;&#x83B7;&#x53D6;&#x6587;&#x4EF6;&#x4FE1;&#x606F;">&#x4E09;&#x3001;&#x83B7;&#x53D6;&#x6587;&#x4EF6;&#x4FE1;&#x606F;</h3>
+<p><strong>&#x8BED;&#x6CD5;&#xFF1A;</strong></p>
+<pre><code class="lang-javascript">fs.stat(path[, options], callback)
+</code></pre>
+<p><strong>&#x53C2;&#x6570;&#xFF1A;</strong></p>
+<p>&#x53C2;&#x6570;&#x4F7F;&#x7528;&#x8BF4;&#x660E;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li><code>path</code> - &#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x3002;</li>
+<li><code>callback</code> - &#x56DE;&#x8C03;&#x51FD;&#x6570;&#x3002;&#x56DE;&#x8C03;&#x6709;&#x4E24;&#x4E2A;&#x53C2;&#x6570; <code>(err, stats)</code>&#xFF0C;&#x5176;&#x4E2D; <code>stats</code> &#x662F;&#x4E00;&#x4E2A; <a href="http://nodejs.cn/s/NMuvVx" target="_blank"><code>fs.Stats</code></a> &#x5BF9;&#x8C61;&#x3002;</li>
+</ul>
+<p>&#x5982;&#x679C;&#x51FA;&#x73B0;&#x9519;&#x8BEF;&#xFF0C;&#x5219; <code>err.code</code> &#x5C06;&#x662F;<a href="http://nodejs.cn/s/5wcdGc" target="_blank">&#x5E38;&#x89C1;&#x7CFB;&#x7EDF;&#x9519;&#x8BEF;</a>&#x4E4B;&#x4E00;&#x3002;</p>
+<p>&#x4E0D;&#x5EFA;&#x8BAE;&#x5728;&#x8C03;&#x7528; <code>fs.open()</code>&#x3001; <code>fs.readFile()</code> &#x6216; <code>fs.writeFile()</code> &#x4E4B;&#x524D;&#x4F7F;&#x7528; <code>fs.stat()</code> &#x68C0;&#x67E5;&#x6587;&#x4EF6;&#x662F;&#x5426;&#x5B58;&#x5728;&#x3002; &#x800C;&#x662F;&#x5E94;&#x8BE5;&#x76F4;&#x63A5;&#x6253;&#x5F00;&#x3001;&#x8BFB;&#x53D6;&#x6216;&#x5199;&#x5165;&#x6587;&#x4EF6;&#xFF0C;&#x5982;&#x679C;&#x6587;&#x4EF6;&#x4E0D;&#x53EF;&#x7528;&#x5219;&#x5904;&#x7406;&#x5F15;&#x53D1;&#x7684;&#x9519;&#x8BEF;&#x3002;</p>
+<p>&#x8981;&#x68C0;&#x67E5;&#x6587;&#x4EF6;&#x662F;&#x5426;&#x5B58;&#x5728;&#x4F46;&#x968F;&#x540E;&#x5E76;&#x4E0D;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#xFF0C;&#x5219;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528; <a href="http://nodejs.cn/s/NCPsM3" target="_blank"><code>fs.access()</code></a>&#x3002;</p>
+<p>&#x4F8B;&#x5982;&#xFF0C;&#x7ED9;&#x5B9A;&#x4EE5;&#x4E0B;&#x7684;&#x6587;&#x4EF6;&#x5939;&#x7ED3;&#x6784;&#xFF1A;</p>
+<pre><code>- txtDir
+  -- file.txt
+- index.js
+</code></pre><p><code>index.js</code> &#x4E2D;&#x7684;&#x4EE3;&#x7801;&#x5185;&#x5BB9;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;fs&apos;</span>);
+
+<span class="hljs-keyword">const</span> pathsToCheck = [<span class="hljs-string">&apos;./txtDir&apos;</span>, <span class="hljs-string">&apos;./txtDir/file.txt&apos;</span>];
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; pathsToCheck.length; i++) {
+  fs.stat(pathsToCheck[i], <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, stats</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(stats.isDirectory());
+    <span class="hljs-built_in">console</span>.log(stats);
+  });
+}
+</code></pre>
+<p>&#x5F97;&#x5230;&#x7684;&#x8F93;&#x51FA;&#x5C06;&#x4F1A;&#x7C7B;&#x4F3C;&#x4E8E;&#xFF1A;</p>
+<pre><code>true
+Stats {
+  dev: 16777220,
+  mode: 16877,
+  nlink: 3,
+  uid: 501,
+  gid: 20,
+  rdev: 0,
+  blksize: 4096,
+  ino: 12895090162,
+  size: 96,
+  blocks: 0,
+  atimeMs: 1567049441318.2173,
+  mtimeMs: 1567049448640.432,
+  ctimeMs: 1567049448640.432,
+  birthtimeMs: 1567049441217.446,
+  atime: 2019-08-29T03:30:41.318Z,
+  mtime: 2019-08-29T03:30:48.640Z,
+  ctime: 2019-08-29T03:30:48.640Z,
+  birthtime: 2019-08-29T03:30:41.217Z }
+false
+Stats {
+  dev: 16777220,
+  mode: 33188,
+  nlink: 1,
+  uid: 501,
+  gid: 20,
+  rdev: 0,
+  blksize: 4096,
+  ino: 12895090175,
+  size: 17,
+  blocks: 8,
+  atimeMs: 1567049483181.4712,
+  mtimeMs: 1567049481957.6978,
+  ctimeMs: 1567049481957.6978,
+  birthtimeMs: 1567049448640.4126,
+  atime: 2019-08-29T03:31:23.181Z,
+  mtime: 2019-08-29T03:31:21.958Z,
+  ctime: 2019-08-29T03:31:21.958Z,
+  birthtime: 2019-08-29T03:30:48.640Z }
+</code></pre><h3 id="&#x56DB;&#x3001;&#x5199;&#x5165;&#x6587;&#x4EF6;">&#x56DB;&#x3001;&#x5199;&#x5165;&#x6587;&#x4EF6;</h3>
+<p><strong>&#x8BED;&#x6CD5;&#xFF1A;</strong></p>
+<p>&#x4EE5;&#x4E0B;&#x4E3A;&#x5F02;&#x6B65;&#x6A21;&#x5F0F;&#x4E0B;&#x5199;&#x5165;&#x6587;&#x4EF6;&#x7684;&#x8BED;&#x6CD5;&#x683C;&#x5F0F;&#xFF1A;</p>
+<pre><code>fs.writeFile(filename, data[, options], callback)
+</code></pre><p>&#x5982;&#x679C;&#x6587;&#x4EF6;&#x5B58;&#x5728;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x5199;&#x5165;&#x7684;&#x5185;&#x5BB9;&#x4F1A;&#x8986;&#x76D6;&#x65E7;&#x7684;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x3002;</p>
+<p><strong>&#x53C2;&#x6570;&#xFF1A;</strong></p>
+<p>&#x53C2;&#x6570;&#x4F7F;&#x7528;&#x8BF4;&#x660E;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li><code>path</code> - &#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x3002;</li>
+<li><code>data</code> - &#x8981;&#x5199;&#x5165;&#x6587;&#x4EF6;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x53EF;&#x4EE5;&#x662F; <code>String</code>(&#x5B57;&#x7B26;&#x4E32;) &#x6216; <code>Buffer</code>(&#x6D41;) &#x5BF9;&#x8C61;&#x3002;</li>
+<li><code>options</code> - &#x8BE5;&#x53C2;&#x6570;&#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x5305;&#x542B; <code>{encoding, mode, flag}</code>&#x3002;&#x9ED8;&#x8BA4;&#x7F16;&#x7801;&#x4E3A; <code>utf8</code>, &#x6A21;&#x5F0F;&#x4E3A; <code>0666</code> &#xFF0C; <code>flag</code>  &#x4E3A; <code>&apos;w&apos;</code></li>
+<li><code>callback</code> - &#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x53EA;&#x5305;&#x542B;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#x53C2;&#x6570;(<code>err</code>)&#xFF0C;&#x5728;&#x5199;&#x5165;&#x5931;&#x8D25;&#x65F6;&#x8FD4;&#x56DE;&#x3002;</li>
+</ul>
+<p><strong>&#x5B9E;&#x4F8B;&#xFF1A;</strong></p>
+<p>&#x521B;&#x5EFA; <code>file.js</code> &#x6587;&#x4EF6;&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;fs&quot;</span>);
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;&#x51C6;&#x5907;&#x5199;&#x5165;&#x6587;&#x4EF6;&quot;</span>);
+fs.writeFile(<span class="hljs-string">&apos;input.txt&apos;</span>, <span class="hljs-string">&apos;&#x6211;&#x662F;&#x901A;&#x8FC7;&#x5199;&#x5165;&#x7684;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#xFF01;&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err</span>) </span>{
+  <span class="hljs-keyword">if</span> (err) {
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">console</span>.error(err);
+  }
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;&#x6570;&#x636E;&#x5199;&#x5165;&#x6210;&#x529F;&#xFF01;&quot;</span>);
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;--------&#x6211;&#x662F;&#x5206;&#x5272;&#x7EBF;-------------&quot;</span>)
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;&#x8BFB;&#x53D6;&#x5199;&#x5165;&#x7684;&#x6570;&#x636E;&#xFF01;&quot;</span>);
+  fs.readFile(<span class="hljs-string">&apos;input.txt&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, data</span>) </span>{
+    <span class="hljs-keyword">if</span> (err) {
+      <span class="hljs-keyword">return</span> <span class="hljs-built_in">console</span>.error(err);
+    }
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;&#x5F02;&#x6B65;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;&#x6570;&#x636E;: &quot;</span> + data.toString());
+  });
+});
+</code></pre>
+<p>&#x4EE3;&#x7801;&#x6267;&#x884C;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code>&gt; node file.js
+&#x51C6;&#x5907;&#x5199;&#x5165;&#x6587;&#x4EF6;
+&#x6570;&#x636E;&#x5199;&#x5165;&#x6210;&#x529F;&#xFF01;
+--------&#x6211;&#x662F;&#x5206;&#x5272;&#x7EBF;-------------
+&#x8BFB;&#x53D6;&#x5199;&#x5165;&#x7684;&#x6570;&#x636E;&#xFF01;
+&#x5F02;&#x6B65;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;&#x6570;&#x636E;: &#x6211;&#x662F;&#x901A;&#x8FC7;&#x5199;&#x5165;&#x7684;&#x6587;&#x4EF6;&#x5185;&#x5BB9;
+</code></pre><p>&#x6211;&#x4EEC;&#x4F1A;&#x53D1;&#x73B0;&#x7A0B;&#x5E8F;&#x4F1A;&#x5E2E;&#x6211;&#x4EEC;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; <code>input.txt</code>&#xFF0C;&#x5E76;&#x5199;&#x5165;&#x76F8;&#x5E94;&#x7684;&#x5185;&#x5BB9;&#x3002;</p>
+<h3 id="&#x4E94;&#x3001;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;">&#x4E94;&#x3001;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;</h3>
+<h3 id="&#x516D;&#x3001;&#x5173;&#x95ED;&#x6587;&#x4EF6;">&#x516D;&#x3001;&#x5173;&#x95ED;&#x6587;&#x4EF6;</h3>
+<h3 id="&#x4E03;&#x3001;&#x622A;&#x53D6;&#x6587;&#x4EF6;">&#x4E03;&#x3001;&#x622A;&#x53D6;&#x6587;&#x4EF6;</h3>
+<h3 id="&#x516B;&#x3001;&#x5220;&#x9664;&#x6587;&#x4EF6;">&#x516B;&#x3001;&#x5220;&#x9664;&#x6587;&#x4EF6;</h3>
+<h3 id="&#x4E5D;&#x3001;&#x521B;&#x5EFA;&#x76EE;&#x5F55;">&#x4E5D;&#x3001;&#x521B;&#x5EFA;&#x76EE;&#x5F55;</h3>
+<h3 id="&#x5341;&#x3001;&#x8BFB;&#x53D6;&#x76EE;&#x5F55;">&#x5341;&#x3001;&#x8BFB;&#x53D6;&#x76EE;&#x5F55;</h3>
+<h3 id="&#x5341;&#x4E00;&#x3001;&#x5220;&#x9664;&#x76EE;&#x5F55;">&#x5341;&#x4E00;&#x3001;&#x5220;&#x9664;&#x76EE;&#x5F55;</h3>
+<h3 id="&#x5341;&#x4E8C;&#x3001;&#x66F4;&#x591A;">&#x5341;&#x4E8C;&#x3001;&#x66F4;&#x591A;</h3>
+
                                 
                                 </section>
                             
@@ -488,7 +678,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"十一、文件操作","level":"1.12","depth":1,"next":{"title":"十二、HTTP 请求","level":"1.13","depth":1,"path":"HTTP/README.md","ref":"HTTP/README.md","articles":[]},"previous":{"title":"十、Stream(流)","level":"1.11","depth":1,"path":"Stream/README.md","ref":"Stream/README.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"nodejs-fs/README.md","mtime":"2019-06-24T10:08:18.743Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-28T08:32:00.617Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"十一、文件系统","level":"1.12","depth":1,"next":{"title":"十二、HTTP 请求","level":"1.13","depth":1,"path":"HTTP/README.md","ref":"HTTP/README.md","articles":[]},"previous":{"title":"十、Stream(流)","level":"1.11","depth":1,"path":"Stream/README.md","ref":"Stream/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"nodejs-fs/README.md","mtime":"2019-08-29T14:40:55.133Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-10-10T08:23:25.681Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
