@@ -6,21 +6,23 @@
 
 ```javascript
 setTimeout(() => {
-    console.log('timer1')
+  console.log('timer1');
 
-    Promise.resolve().then(function () {
-        console.log('promise1')
-    })
-}, 0)
+  Promise.resolve().then(function () {
+    console.log('promise1');
+  });
+}, 0);
 
 setTimeout(() => {
-    console.log('timer2')
+  console.log('timer2');
 
-    Promise.resolve().then(function () {
-        console.log('promise2')
-    })
-}, 0)
+  Promise.resolve().then(function () {
+    console.log('promise2');
+  });
+}, 0);
 ```
+
+<!-- more -->
 
 我们现在浏览器里面运行一下，结果应该和我们预想的一样(如果你已经读过[《浏览器中的事件循环》](https://togoblog.cn/event-loop-in-browser/))：
 
@@ -57,14 +59,21 @@ promise2
 
  `Node.js` 运行时环境图示：
 
-![node.js 架构图](https://raw.githubusercontent.com/IDeepspace/ImageHosting/master/NodeJS/nodejs-architecture.png)
+<img src="https://raw.githubusercontent.com/IDeepspace/ImageHosting/master/NodeJS/nodejs-architecture.png" alt="node.js 架构图" style="zoom:67%;" />
 
-- **Application/Modules（JS）**：这部分就是所有的 `JavaScript` 代码：我们的应用程序、`Node.js` 核心模块、任何 `npm install` 的模块，以及你写的所有模块代码等等，我们花费的主要精力都在这部分。
-- **C/C++ Bindings**：`Node.js` 中用了很多 `C/C++` 的代码和库，它们的性能很好。但是这三种不同的语言是怎么相互调用的呢？`Bindings` 就在这里发挥了作用。`Bindings` 是一些胶水代码，能够把不同语言绑定在一起，使其能够互相沟通调用。
-- **Addons**：`Binding` 仅桥接 `Node.js` 核心库的一些依赖，`zlib`、`OpenSSL`、`c-ares`、`http-parser ` 等。如果你想在应用程序中包含其他第三方或者自己的 `C/C++` 库的话，需要自己完成这部分胶水代码。那我们自己写的这部分胶水代码就称为 `Addon`。可以把 `Binding` 和 `Addons` 视为连接 ` JavaScript`  代码和 `C/C++` 代码的桥梁。
-- [**V8**](https://developers.google.com/v8/)：`Google` 开源的高性能 `JavaScript` 引擎，以 `C++` 实现。这也是集成在 `Chrome` 中的 `JS` 引擎。`V8` 将你写的 `JavaScript` 代码编译为机器码（所以它超级快）然后执行。
-- [**libuv**](https://github.com/libuv/libuv)：提供异步功能的 `C` 库。它在运行时负责一个事件循环（`Event Loop`）、一个线程池、文件系统 `I/O`、`DNS` 相关和网络 `I/O`，以及一些其他重要功能。
-- [**其他 C/C++ 组件和库**](https://nodejs.org/en/docs/meta/topics/dependencies/)：如 [c-ares](http://c-ares.haxx.se/)、[crypto (OpenSSL)](https://www.openssl.org/)、[http-parser](https://github.com/nodejs/http-parser) 以及 [zlib](http://zlib.net/)。这些依赖提供了对系统底层功能的访问，包括网络、压缩、加密等。
+<p align="center">(图片来自网络)</p>
+
+**1、Application/Modules（JS）**：这部分就是所有的 `JavaScript` 代码：我们的应用程序、`Node.js` 核心模块、任何 `npm install` 的模块，以及你写的所有模块代码等等，我们花费的主要精力都在这部分。
+
+**2、C/C++ Bindings**：`Node.js` 中用了很多 `C/C++` 的代码和库，它们的性能很好。但是这三种不同的语言是怎么相互调用的呢？`Bindings` 就在这里发挥了作用。`Bindings` 是一些胶水代码，能够把不同语言绑定在一起，使其能够互相沟通调用。
+
+**3、Addons**：`Binding` 仅桥接 `Node.js` 核心库的一些依赖，`zlib`、`OpenSSL`、`c-ares`、`http-parser ` 等。如果你想在应用程序中包含其他第三方或者自己的 `C/C++` 库的话，需要自己完成这部分胶水代码。那我们自己写的这部分胶水代码就称为 `Addon`。可以把 `Binding` 和 `Addons` 视为连接 ` JavaScript`  代码和 `C/C++` 代码的桥梁。
+
+[**4、V8**](https://developers.google.com/v8/)：`Google` 开源的高性能 `JavaScript` 引擎，以 `C++` 实现。这也是集成在 `Chrome` 中的 `JS` 引擎。`V8` 将你写的 `JavaScript` 代码编译为机器码（所以它超级快）然后执行。
+
+[**5、libuv**](https://github.com/libuv/libuv)：提供异步功能的 `C` 库。它在运行时负责一个事件循环（`Event Loop`）、一个线程池、文件系统 `I/O`、`DNS` 相关和网络 `I/O`，以及一些其他重要功能。
+
+[**6、其他 C/C++ 组件和库**](https://nodejs.org/en/docs/meta/topics/dependencies/)：如 [c-ares](http://c-ares.haxx.se/)、[crypto (OpenSSL)](https://www.openssl.org/)、[http-parser](https://github.com/nodejs/http-parser) 以及 [zlib](http://zlib.net/)。这些依赖提供了对系统底层功能的访问，包括网络、压缩、加密等。
 
 
 
@@ -74,18 +83,25 @@ promise2
 
 在 `Node.js` 中，也是单线程的事件循环。`Nodejs` 的事件循环会分为6个阶段，它们会按照顺序反复运行。
 
-![NodeJS事件循环](https://raw.githubusercontent.com/IDeepspace/ImageHosting/master/NodeJS/nodejs-eventloop-structure.jpg)
+<img src="https://raw.githubusercontent.com/IDeepspace/ImageHosting/master/NodeJS/nodejs-eventloop-structure.jpg" alt="NodeJS事件循环" style="zoom: 50%;" />
 
 每个阶段的作用如下:
 
-- `timers` 阶段：这个阶段执行 `timer` (包括 `setTimeout`、`setInterval`) 的回调；
-- `I/O callbacks` 阶段：执行 `I/O`（例如文件、网络）的回调；
-- `idle, prepare` 阶段：队列的移动，仅 `node` 内部使用；
-- `poll` 阶段：最重要的阶段，获取新的 `I/O` 事件, 适当的条件下 `node` 将阻塞在这里；
-- `check` 阶段：执行 `setImmediate()` 的 `callback`；
-- `close callbacks` 阶段：执行 `close` 事件的 `callback`，例如 `socket.on("close",func)`
+1. `timers` 阶段：这个阶段执行 `timer` (包括 `setTimeout`、`setInterval`) 的回调；
+
+2. `I/O callbacks` 阶段：执行 `I/O`（例如文件、网络）的回调；
+
+3. `idle, prepare` 阶段：队列的移动，仅 `node` 内部使用；
+
+4. `poll` 阶段：最重要的阶段，获取新的 `I/O` 事件, 适当的条件下 `node` 将阻塞在这里；
+
+5. `check` 阶段：执行 `setImmediate()` 的 `callback`；
+
+6. `close callbacks` 阶段：执行 `close` 事件的 `callback`，例如 `socket.on("close",func)`
 
 我们重点看 `timers`、`poll`、`check ` 这3个阶段就好，因为日常开发中的绝大部分异步任务都是在这3个阶段处理的。
+
+
 
 #### 1、timers 阶段
 
@@ -95,15 +111,17 @@ promise2
 
 ```javascript
 setTimeout(() => {
-  console.log('timeout')
-}, 0)
+  console.log('timeout');
+}, 0);
 
 setImmediate(() => {
-  console.log('immediate')
-})
+  console.log('immediate');
+});
 ```
 
 但是把它们放到一个 `I/O` 回调里面，就一定是 `setImmediate()` 先执行，因为 `poll` 阶段后面就是 `check` 阶段。
+
+
 
 #### 2、poll 阶段
 
@@ -119,11 +137,11 @@ setImmediate(() => {
 
 注意一个细节，没有 `setImmediate()` 会导致 `event loop` 阻塞在 `poll` 阶段，这样之前设置的 `timer` 岂不是执行不了了？所以呢，在 `poll` 阶段 `event loop` 会有一个检查机制，检查 `timer` 队列是否为空，如果 `timer` 队列非空，`event loop` 就开始下一轮事件循环，即重新进入到 `timer` 阶段。
 
+
+
 #### 3、check 阶段
 
 `setImmediate()` 的回调会被加入 `check` 队列中， 从 `event loop` 的阶段图可以知道，`check` 阶段的执行顺序在 `poll` 阶段之后。
-
-
 
 **小结一下：**
 
@@ -134,17 +152,17 @@ setImmediate(() => {
 看个 `demo` :
 
 ```javascript
-const fs = require('fs')
+const fs = require('fs');
 
 fs.readFile('test.txt', () => {
-  console.log('readFile')
+  console.log('readFile');
   setTimeout(() => {
-    console.log('timeout')
-  }, 0)
+    console.log('timeout');
+  }, 0);
   setImmediate(() => {
-    console.log('immediate')
-  })
-})
+    console.log('immediate');
+  });
+});
 ```
 
 结果：
@@ -165,26 +183,31 @@ timeout
 
 浏览器环境下，`microtask` 的任务队列是每个 `macrotask ` 执行完之后执行。
 
-![事件循环](https://raw.githubusercontent.com/IDeepspace/ImageHosting/master/NodeJS/eventLoop-browser-2.png)
+<img src="https://raw.githubusercontent.com/IDeepspace/ImageHosting/master/NodeJS/eventLoop-browser-2.png" alt="事件循环" style="zoom:87%;" />
+
+<p align="center">(图片来自网络)</p>
 
 而在 `Node.js` 中，**`microtask` 会在事件循环的各个阶段之间执行，也就是一个阶段执行完毕，就会去执行 `microtask` 队列的任务。**
 
-![NodeJS事件循环](https://raw.githubusercontent.com/IDeepspace/ImageHosting/master/NodeJS/nodejs-eventloop-structure.jpg)
+<img src="https://raw.githubusercontent.com/IDeepspace/ImageHosting/master/NodeJS/nodejs-eventloop-structure.jpg" alt="NodeJS事件循环" style="zoom: 50%;" />
 
-文章最开始的 `demo`，在 `Node.js` 环境中，全局脚本 `main()` 执行，将2个 `timer` 依次放入 `timer` 队列，`main()` 执行完毕，执行栈空闲，任务队列开始执行：
+文章最开始的 `demo`，在 `Node.js` 环境中，全局脚本 `main()` 执行，将 2 个 `timer` 依次放入 `timer` 队列，`main()` 执行完毕，执行栈空闲，任务队列开始执行：
 
 ![NodeJS事件循环](https://raw.githubusercontent.com/IDeepspace/ImageHosting/master/NodeJS/node-excute-animate.gif)
 
+<p align="center">(图片来自网络)</p>
+
 - 首先进入 `timers` 阶段，执行 `timer1` 的回调函数，打印 `timer1`，并将 `promise1.then` 回调放入 `microtask` 队列，同样的步骤执行 `timer2` ，打印 `timer2`；
+
 - 至此，`timer` 阶段执行结束，`event loop` 进入下一个阶段之前，执行 `microtask` 队列的所有任务，依次打印 `promise1`、`promise2`。
 
 **对比浏览器端的处理过程：**
 
 ![事件循环](https://raw.githubusercontent.com/IDeepspace/ImageHosting/master/NodeJS/browser-event-loop-excute-animate.gif)
 
+<p align="center">(图片来自网络)</p>
 
-
-### 五、process.nextTick和setImmediate
+### 五、process.nextTick 和 setImmediate
 
 除了 `setTimeout` 和 `setInterval` 这两个方法，`Node.js` 还提供了另外两个与 **任务队列** 有关的方法：[process.nextTick](http://nodejs.org/docs/latest/api/process.html#process_process_nexttick_callback) 和 [setImmediate](http://nodejs.org/docs/latest/api/timers.html#timers_setimmediate_callback_arg)。它们可以帮助我们加深对 **任务队列** 的理解。
 
@@ -193,26 +216,26 @@ timeout
 比如下面例子的 `readFile` 已经完成，但它的回调一直无法执行：
 
 ```javascript
-const fs = require('fs')
-const starttime = Date.now()
-let endtime
+const fs = require('fs');
+const starttime = Date.now();
+let endtime;
 
 fs.readFile('text.txt', () => {
-  endtime = Date.now()
-  console.log('finish reading time: ', endtime - starttime)
-})
+  endtime = Date.now();
+  console.log('finish reading time: ', endtime - starttime);
+});
 
-let index = 0
+let index = 0;
 
-function handler () {
-  if (index++ >= 1000) return
-  console.log(`nextTick ${index}`)
-  process.nextTick(handler)
+function handler() {
+  if (index++ >= 1000) return;
+  console.log(`nextTick ${index}`);
+  process.nextTick(handler);
   // console.log(`setImmediate ${index}`)
   // setImmediate(handler)
 }
 
-handler()
+handler();
 ```
 
 `process.nextTick()` 的运行结果：
@@ -244,7 +267,11 @@ setImmediate 1000
 ### 六、总结
 
 1. `Node.js` 的事件循环分为6个阶段；
-2. 浏览器和Node 环境下，`microtask` 任务队列的执行时机不同
+
+2. 浏览器和 `Node` 环境下，`microtask` 任务队列的执行时机不同
+
    - `Node.js` 中，`microtask` 在事件循环的各个阶段之间执行
+
    - 浏览器端，`microtask` 在事件循环的 `macrotask` 执行完之后执行
+
 3. 递归的调用 `process.nextTick()` 会导致 `I/O starving` ，官方推荐使用 `setImmediate()`
